@@ -1,0 +1,49 @@
+公开源码版前置条件
+本仓库只提供下述 Python/Lua 控制脚本，不包含定制无头二进制。以下无头、认证 TCP、逐帧及私有 GDB 示例仅适用于另行取得并验证的匹配后端。官方图形 mGBA 不保证这些定制行为。
+
+AI 调用 mGBA（Windows 原生）
+
+图形界面
+双击 Open_mGBA.cmd，或使用 runtime\mgba\mGBA.exe。
+先复制 ROM/SAV 到独立运行目录，再打开副本；模拟器通常会在运行 ROM 邻近位置读写 .sav。
+官方 mGBA 由初始化脚本直接下载到本地 runtime；个人配置、历史和运行数据不要上传仓库。
+
+无头工具
+来自 SHARE 的自定义 mGBA 0.10.5 构建，含 Lua、认证的本机控制端口、截图/状态和暂停逐帧控制。
+默认原 SHARE 的高级 PC 跟踪和 GDB 模式为 GBA 专用。GB/GBC 的基础帧、读内存、截图能力以本包自测结果为准。
+GB/GBC 只观察当前映射 bank；READBLOCK 0x4000 不等于读取任意物理 bank。
+分享包路径和运行根目录必须 ASCII（可含空格）；原 ROM/SAV 可使用中文名。
+服务管理器会复制输入为隔离副本，Lua 显式加载隔离普通 SAV；每个实例目录独立且不能重复启动覆盖已有记录。
+进程通过随机令牌认证，session.json 只留本机，不对外分享。不要连接或停止其它项目的实例。
+
+以下 PowerShell 示例从包根目录执行，替换 game.gba 为自己的 ROM 副本：
+.\python.cmd tools\windows_mgba\windows_mgba_service.py start --instance check1 --rom "workspace\input\game.gba" --paused
+.\python.cmd tools\windows_mgba\mgba_client.py "workspace\runtime\check1\session.json" PING FRAMES
+.\python.cmd tools\windows_mgba\windows_mgba_service.py frame --instance check1 1
+.\python.cmd tools\windows_mgba\mgba_client.py "workspace\runtime\check1\session.json" "SHOT ./screenshots/frame1.png"
+.\python.cmd tools\windows_mgba\windows_mgba_service.py stop --instance check1
+
+SHOT 的相对路径以隔离实例目录为基准，示例输出在该实例 screenshots 下；也可从 session.json 推导绝对路径。
+每个新实例采用新名字；有普通存档时，在 start 末尾加 --save "<SAV绝对路径>"。
+暂停时可发送读内存/按键命令，按键持续帧数需真正推进帧才会消耗。
+按键位：A=0x001，B=0x002，Select=0x004，Start=0x008，Right=0x010，Left=0x020，Up=0x040，Down=0x080。
+GBA 另有 R=0x100、L=0x200；GB/GBC 不使用这两个键。
+例：KEYS 0x001 3，随后由管理器 frame 3 推进。
+
+读内存例
+GBA：READBLOCK 0x08000000 16 或 READ32 0x02000000。
+GB/GBC：READBLOCK 0x0100 16 或 READ8 0xC000；注意当前 bank 的解释。
+READBLOCK 上限 16KiB，DUMPBLOCK 上限 64KiB且仅能写本实例 analysis 目录。
+不要用任意写 ROM/RAM 代替正式可复现补丁；如果做动态实验，必须先保存原值、限定范围并保留记录。
+第 0 帧截图不可用，先 frame 1。WAIT 在暂停态不会按墙钟时间完成，不要发送 WAIT 后等待它自动推进。
+
+GBA 专用 GDB
+start 增加 --mode gdb，然后使用 gdb_remote_probe.py <session.json> 或 arm-none-eabi-gdb 连接记录的端口。
+本自定义 GDB 入口不能显式加载普通 SAV，因此会拒绝 --mode gdb 与 --save 的组合；带存档调试优先使用 Lua 模式。
+GDB 和 Lua 是两个启动模式。GDB stub 只支持一个客户端，不用 readiness 连接抢占调试槽。
+
+证据边界
+基础设施自测证明程序能运行、隔离/认证/读取/截图等命令可用；不证明商业游戏的文本正确、路线完成或 BUG 修复。
+每项游戏验收记录具体 ROM 哈希、输入场景、操作步骤、预期/实际、截图/日志。
+普通 SAV 保存与完全重启必须另外验收；即时状态不替代普通存档。
+未实际执行的模拟器/真机/存档测试写 not_run。

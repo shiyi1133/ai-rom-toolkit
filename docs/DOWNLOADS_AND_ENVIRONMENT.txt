@@ -1,0 +1,41 @@
+公开源码版：依赖来源与环境初始化
+
+运行 Initialize_Environment.cmd，或：
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Initialize_Environment.ps1
+
+版本、完整 SHA-256、官方 URL、归档布局和校验依据唯一登记在根目录 dependencies.lock.json。
+脚本先用 PowerShell 准备便携 Python，再用标准库下载、校验和解压依赖；Windows 自带 tar.exe 用于官方 mGBA 的 7z 归档。
+所有依赖仅安装到本项目 runtime，缓存默认在 .cache；runtime/workspace/reports/cache 不进入 Git。
+已有缓存可加 -CacheDirectory "D:\ROM_AI_CACHE"。哈希不符时保留已有文件并报错，不覆盖不明目录。
+如某归档 URL 失效，先核实官方来源和版本，再明确更新锁文件并重新验收；不能直接忽略完整性检查。
+
+锁定组件
+- CPython 3.13.16，Windows x64 嵌入式版：python.org；安装入口 python.cmd。
+- Arm GNU Toolchain 14.3.Rel1，Windows x64 / arm-none-eabi：Arm 官方分发。
+- RGBDS 1.0.4，Windows x64：github.com/gbdev/rgbds。
+- 官方 mGBA 0.10.5，Windows x64：github.com/mgba-emu/mgba。
+
+官方下载与源码
+Python：https://www.python.org/downloads/windows/
+Arm：https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads
+RGBDS：https://github.com/gbdev/rgbds/releases/tag/v1.0.4
+mGBA：https://github.com/mgba-emu/mgba/releases/tag/0.10.5
+mGBA 源码：https://github.com/mgba-emu/mgba/tree/0.10.5
+第三方许可见 THIRD_PARTY_NOTICES.md 及各归档内部文件，不能用本项目 MIT 替代。
+
+环境检查
+.\python.cmd tools\check_environment.py
+.\python.cmd tools\self_test.py
+.\python.cmd tools\verify_package.py
+第一次初始化会实际执行前两项；已有相同环境通过证据时，重复初始化可加 -SkipSelfTest。
+基础自测只使用自制示例；不证明任何商业游戏汉化、真机效果或正常保存兼容。
+
+可选定制无头后端
+本源码版不下载或分发定制 mgba-headless.exe / mgba-headless-gdb.exe；对应扩展明确单列 not_available。
+如已有合法、匹配的本地后端，先查 tools/windows_mgba/BUILD_NOTES.md，再单独执行 --require-headless 和 --with-headless 验证。
+不能把官方 mGBA 图形版存在当成定制帧控制可用；也不能把这两个程序混成同一个构建身份。
+
+运行边界
+源码检查和 romkit 工具可用常规 Python 3.11+；Windows 工具链和环境初始化以 Windows 10/11 x64 为目标。
+不随包提供 pip、Capstone、Pillow 等项目专用扩展；确需时用独立 venv，并按项目声明依赖。
+无需 WSL 或全局 PATH。若从 WSL 发起测试，实际执行主体应是 Windows PowerShell、python.exe 与 .exe，并在报告中说明。

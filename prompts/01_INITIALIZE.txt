@@ -1,0 +1,32 @@
+【初始化提示词：把下面整段交给能访问本地文件的 AI】
+
+我的目标是在 Windows 环境中完成 GB/GBC/GBA 游戏汉化或 BUG 修复。请实际检查文件并建立项目，不要只列计划。
+工具包目录：<填写本工具包的绝对路径>
+原始 ROM：<填写绝对路径>
+普通存档（可选）：<填写绝对路径；没有则写无>
+游戏名/地区/版本：<已知信息；未知项不要猜>
+平台：<GB / GBC / GBA>
+本次目标：<汉化范围，或 BUG 症状>
+
+1. 先读工具包的 AGENTS.md、00_README_CN.txt、docs/PLATFORM_GUIDE.txt、docs/LOCALIZATION_WORKFLOW.txt、docs/MGBA_AI_GUIDE.txt。
+   区分从文档取得的旧信息与实际文件证据。SHARE 原先属于特定游戏，禁止套用其中的固定哈希、旧补丁或地址。
+2. 确认你的执行环境。Windows 原生用本包 .exe；若 AI 在 WSL 中，只在构建可明确执行 Windows 程序的桥接方式后继续，不能把 Linux 工具的通过冒充 Windows 通过。
+   CMD 可 call env.cmd；PowerShell 可直接使用 .\python.cmd。首次使用先按 prompts/00_BOOTSTRAP_ENVIRONMENT.txt 准备依赖；基础环境检查：
+   .\python.cmd tools\check_environment.py
+   首次使用或工具/环境变更时做自制程序工具链测试（可选定制模拟器需另加 --with-headless）：.\python.cmd tools\self_test.py；已有相同环境的通过证据且未受影响时不重复全套自测。
+   先查看实际结果，不猜工具版本。不要安装全局依赖、改系统 PATH、改注册表或要求管理员权限。
+3. 对原 ROM 运行 tools\romkit.py identity，确认大小、SHA-256、MD5、CRC32，读取头部并核对平台、地区和修订。
+   存档单独计算哈希。原始文件不能被修改或交给模拟器直接写入。
+4. 用 tools\romkit.py init 建立全新 workspace\projects\<英文项目名>：
+   .\python.cmd tools\romkit.py init "<ROM>" --platform <gba/gb/gbc> --project "workspace\projects\<项目名>"
+   有存档加 --save "<SAV>"。项目目录已存在时读取已有 project.json，不能覆盖重建。
+   init 只按我明确的平台登记；你仍须核对实际头部和游戏信息，发现冲突先解决身份问题。
+5. 建立 PROJECT_STATUS.txt、ANALYSIS_NOTES.txt、修改占用区登记、验证清单和下一步工作记录。
+   可使用 templates/OCCUPANCY_TEMPLATE.tsv；字体、文本搬移、代码和预留区必须进入同一登记，文件偏移统一为半开区间。
+   模板需自行复制或合入已有登记；init 不自动提供游戏专用分配器。项目已存在时先查真实状态和归属，不重建、覆盖或恢复暂停任务。
+   对 GBA 分清 ARM/Thumb 状态与 ROM 映射；对 GB/GBC 查 MBC、bank 和跨银行指针。
+6. 先做只读资源调查：文本编码、字库、指针表、压缩格式、菜单/对话显示和已有修改情况。
+   分开统计 ROM 字库、合法码值、运行时缓冲和显存缓存；填充字节和零字面指针只标候选，不直接认定空闲。
+   只搜索关键词不算确认。读所在函数、调用关系、字段来源、消费者和失败路径，标注 confirmed / inferred / hypothesis。
+7. 输出简短初始化报告：项目路径、平台/ROM 身份、实际可用工具、已知限制、原文件哈希保持情况、下一项具体工作。
+   缺少资料时指出它具体阻塞哪一步，同时继续独立工作。不要把尚未执行的检查写成通过。

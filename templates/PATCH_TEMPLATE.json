@@ -1,0 +1,12 @@
+﻿{
+  "schema_version": 1,
+  "base_sha256": "FILL_WITH_ACTUAL_BASE_SHA256",
+  "writes": [
+    {
+      "offset": "0xFILL",
+      "before_hex": "FILL_FROM_BASE",
+      "after_hex": "FILL_WITH_SAME_LENGTH",
+      "note": "Explain evidence, platform, bank/address, and scope."
+    }
+  ]
+}

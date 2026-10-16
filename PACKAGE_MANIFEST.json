@@ -1,0 +1,256 @@
+{
+  "package": "ai-rom-toolkit-source",
+  "version": "0.1.0",
+  "date": "2026-10-16",
+  "distribution": "source-only; dependencies installed locally",
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 257,
+      "sha256": "47133abcd99af9ee85f2d7ecc2b6131408c9de25ef9eb118dbedc9327ca1bf28"
+    },
+    {
+      "path": "00_README_CN.txt",
+      "bytes": 607,
+      "sha256": "a95db34b62d3e485b4175cd3cadf2fd163cdecc9bf8d772718f2bf7c30d3fb8b"
+    },
+    {
+      "path": "AGENTS.md",
+      "bytes": 2107,
+      "sha256": "5d78978454b7e33770525654e9095f6f267740a15167c88b3417fd9ee0aa3f97"
+    },
+    {
+      "path": "Check_Environment.cmd",
+      "bytes": 202,
+      "sha256": "18d25fd17df97fd896f4f724d044f19bcb64fb292eb9d703486ba99b3ae8600c"
+    },
+    {
+      "path": "Initialize_Environment.cmd",
+      "bytes": 209,
+      "sha256": "bf3677850b4e2c650ab91c3a70e85560e48fbbe4106c8d6d76e14a1d8ddae618"
+    },
+    {
+      "path": "Initialize_Environment.ps1",
+      "bytes": 4832,
+      "sha256": "e5004aef6be8075fdadf2005997b052c454d8f66de45fceeda2b4fb84202b873"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1083,
+      "sha256": "eb8422766f1bd30144e1a0f64036275e156d0a14b5ad4a91a66cf0ff1f90f7cc"
+    },
+    {
+      "path": "Open_AI_Shell.cmd",
+      "bytes": 198,
+      "sha256": "b3b50d2913c9b9c099c7933107efba9c2dbc680b4b9b08546836a2e634f94da3"
+    },
+    {
+      "path": "Open_mGBA.cmd",
+      "bytes": 53,
+      "sha256": "d6f6c42bf9e640ad7200a2f32f2f2129bb365a196442d507eadf00403560f175"
+    },
+    {
+      "path": "README.md",
+      "bytes": 4444,
+      "sha256": "2ec6a1cdfe9301bd87ffdf007887f300904fc55bd331b49dc02d2a032f5b6924"
+    },
+    {
+      "path": "Run_Self_Test.cmd",
+      "bytes": 186,
+      "sha256": "4eec60d221d85970c63fd8bf8797807aa8f06905bdc521aceb97caf4a4c01b72"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "bytes": 1854,
+      "sha256": "be4bebf7bfd688e1bef199b001e8bceab14d92366b9ec0f29ecea270317cd36c"
+    },
+    {
+      "path": "dependencies.lock.json",
+      "bytes": 2514,
+      "sha256": "e910d1e11d92475e2a0bccad639dac290b62d82943a2beaa86b4af1268e14b8c"
+    },
+    {
+      "path": "docs/DOWNLOADS_AND_ENVIRONMENT.txt",
+      "bytes": 2740,
+      "sha256": "30c126e4f90c1ae14f5109d94044e0485e488be00bbbc3a80284d7b542f0f08d"
+    },
+    {
+      "path": "docs/LOCALIZATION_WORKFLOW.txt",
+      "bytes": 10248,
+      "sha256": "961837d4c2a9aa021b52982f5d5afeb66e797978b1c8afe1604e98d118a6230f"
+    },
+    {
+      "path": "docs/MGBA_AI_GUIDE.txt",
+      "bytes": 3859,
+      "sha256": "b6c2db399d9417f0adae6fec768337b8f451f684873efc58262a5d33719bf2ed"
+    },
+    {
+      "path": "docs/PLATFORM_GUIDE.txt",
+      "bytes": 4857,
+      "sha256": "06cb3a73e8a2ccaac7cf5fdafbab143598834110410c9c323ee4a3b024918ad5"
+    },
+    {
+      "path": "docs/VALIDATION_SCOPE.txt",
+      "bytes": 1744,
+      "sha256": "817db749e7f149b0ab822e4edcc6da1db926ae5abb59bfa000b0e4f4819e725f"
+    },
+    {
+      "path": "docs/cases/GURANBO_OVERLAP.txt",
+      "bytes": 1340,
+      "sha256": "e3ded4448ed15d7c70683ef3f53dd0c8b3ec12e37f467d1976964b2d74ea08ba"
+    },
+    {
+      "path": "env.cmd",
+      "bytes": 252,
+      "sha256": "f87689d8daaf4a5cf187b9eb8e2327e38926cc2004ffd43319ddb14540a5a29f"
+    },
+    {
+      "path": "examples/gb/smoke.asm",
+      "bytes": 214,
+      "sha256": "e2bbdbb0e2e3aa45ae390bc26567ece85b1a8f0061c7dce5f7668db49fe6e1f7"
+    },
+    {
+      "path": "examples/gba/smoke.s",
+      "bytes": 314,
+      "sha256": "20e46684871b415e08137b96efd31864317e0a9ff7002e52f1329c4787b4a7e6"
+    },
+    {
+      "path": "examples/gbc/smoke.asm",
+      "bytes": 214,
+      "sha256": "e2bbdbb0e2e3aa45ae390bc26567ece85b1a8f0061c7dce5f7668db49fe6e1f7"
+    },
+    {
+      "path": "licenses/RGBDS_LICENSE.txt",
+      "bytes": 1108,
+      "sha256": "776850497a707cc8183b19b774cf73dd0d79428cb1c51e452a940875be1e292c"
+    },
+    {
+      "path": "licenses/mGBA-http-MIT.txt",
+      "bytes": 1061,
+      "sha256": "9e5d6c2f1d172aaf532adf909d365c1a7ade8154105ae65a2255136769add58b"
+    },
+    {
+      "path": "prompts/00_BOOTSTRAP_ENVIRONMENT.txt",
+      "bytes": 4316,
+      "sha256": "310d61a90360a7cf1ff7632bba82f6696766c030d057595f0fcf4c0432d97fe3"
+    },
+    {
+      "path": "prompts/01_INITIALIZE.txt",
+      "bytes": 3490,
+      "sha256": "d7f23134e63433957c2725a3cdb1d284b512ff8ce663bd333cb80b3925199169"
+    },
+    {
+      "path": "prompts/02_LOCALIZE.txt",
+      "bytes": 5432,
+      "sha256": "61465d34a4c24ae7b9e3d526e075868e7a9dd94a705405155616f72a78332f85"
+    },
+    {
+      "path": "prompts/03_FIX_BUG.txt",
+      "bytes": 4101,
+      "sha256": "a1325ad8003f8535433c48a538ed506af14ab90737a3095f599112b6def15682"
+    },
+    {
+      "path": "python.cmd",
+      "bytes": 189,
+      "sha256": "bb83c7646d348760a332243112460b18b5e98133eba6f9808f6fa90f97f25dc1"
+    },
+    {
+      "path": "templates/BUG_REPORT_TEMPLATE.txt",
+      "bytes": 465,
+      "sha256": "0d77b8e2eca34c4571118f58061b0128a13dd74b704d19ade5bdf2544a139d98"
+    },
+    {
+      "path": "templates/OCCUPANCY_TEMPLATE.tsv",
+      "bytes": 189,
+      "sha256": "822959e83f0092e7119811908d35c1b48a305bb859fe194ebce8ef06449f17bf"
+    },
+    {
+      "path": "templates/PATCH_TEMPLATE.json",
+      "bytes": 286,
+      "sha256": "3b109309d2a093ae60e2c0020236e1e563f2f256ab901fd8b4b8c7dadd87f506"
+    },
+    {
+      "path": "templates/PROJECT_RULES.txt",
+      "bytes": 2957,
+      "sha256": "7b663f76042af6f3c5363e7bbc7b683b98981a94daa51db0f48babc3c411517b"
+    },
+    {
+      "path": "templates/TEST_ACCEPTANCE.txt",
+      "bytes": 1885,
+      "sha256": "ac75981dbc29d6eb0a9c00758cc4091ddffd5a425d7a9bd5bf8712216dd0e1b6"
+    },
+    {
+      "path": "templates/TEXT_RECORD_TEMPLATE.tsv",
+      "bytes": 149,
+      "sha256": "01c3adfd32a3d682ad25242c3b901d064f03d4730ccd193ec1bf713453a0ea3c"
+    },
+    {
+      "path": "tests/test_bootstrap.py",
+      "bytes": 2698,
+      "sha256": "3534b8c891e3cbd113f99ddaccffc9ae0f69b8875b4d208b62bfa2ba476f1a8a"
+    },
+    {
+      "path": "tests/test_romkit.py",
+      "bytes": 3895,
+      "sha256": "f5b7253192a749ff309267d372b8dec7e87e8d29d9252324bbb3e3858b73935e"
+    },
+    {
+      "path": "tools/bootstrap_environment.py",
+      "bytes": 5949,
+      "sha256": "0aad003365ccf188cba950e231d8263c759fe5fbdb86f2582b0d318d2c7c0b94"
+    },
+    {
+      "path": "tools/check_environment.py",
+      "bytes": 3351,
+      "sha256": "9051f814f347fcf4ef0618ba60f0e3ce85ad174080430c9d1a0a324d51296f69"
+    },
+    {
+      "path": "tools/romkit.py",
+      "bytes": 7995,
+      "sha256": "c77c3558ef14197780c6db800aa8df7a3f4cf6494f6e1f06c51c925814f34d9d"
+    },
+    {
+      "path": "tools/self_test.py",
+      "bytes": 11146,
+      "sha256": "043bcddaee9d98712fa074e8b7fa215236dade3b8d5af2cf87f03ad64d990fee"
+    },
+    {
+      "path": "tools/verify_package.py",
+      "bytes": 874,
+      "sha256": "0c27ba0d494350817b248db162b45c426cf35172f6c7b71db6fd19a036145a13"
+    },
+    {
+      "path": "tools/windows_mgba/BUILD_NOTES.md",
+      "bytes": 2859,
+      "sha256": "0113a8a8ddd7ba50107236d65a5b0f748ac0cc37cb6b0f837490d56644c4012e"
+    },
+    {
+      "path": "tools/windows_mgba/MGBA_LICENSE.txt",
+      "bytes": 16726,
+      "sha256": "fab3dd6bdab226f1c08630b1dd917e11fcb4ec5e1e020e2c16f83a0a13863e85"
+    },
+    {
+      "path": "tools/windows_mgba/gdb_remote_probe.py",
+      "bytes": 1222,
+      "sha256": "fdace94206d8f9211774b202db1d06ea37d20bee209129bbb31d49970808253b"
+    },
+    {
+      "path": "tools/windows_mgba/mgba_client.py",
+      "bytes": 2246,
+      "sha256": "cbe3a69a76a88c1eb1c1c04afcfe66395e274073ca6bccab327eb3011f39089e"
+    },
+    {
+      "path": "tools/windows_mgba/mgba_server.lua",
+      "bytes": 33901,
+      "sha256": "3f707d66cba0d1d1ae56e4119466ef898a48a4c29a1cb32c4ee6dfade71ccebd"
+    },
+    {
+      "path": "tools/windows_mgba/windows_mgba_service.py",
+      "bytes": 15860,
+      "sha256": "53f6f547f0564f0249e271a1bb541ed6e17ef346745424d478f8c84f19dae6f6"
+    }
+  ],
+  "total_files": 49,
+  "total_bytes": 178678,
+  "game_roms_saves_binaries_sessions_included": false
+}

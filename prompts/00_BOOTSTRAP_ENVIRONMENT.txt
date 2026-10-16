@@ -1,0 +1,44 @@
+【直接交给 AI：初始化 Windows GB/GBC/GBA ROM 工具环境】
+
+请实际完成环境初始化，不要只列计划。
+
+公开仓库：https://github.com/shiyi1133/ai-rom-toolkit
+本地目标目录：D:\ROM_AI\ai-rom-toolkit（可按我的实际磁盘调整，推荐英文路径，可含空格）
+本次范围：只初始化工具环境。没有我另行提供的 ROM 和明确项目指令，不新建游戏汉化/修复任务，不恢复暂停项目。
+可选下载缓存目录：无；如果我提供已有缓存，仅校验后复用，不修改原件。
+
+1. 核实环境与源码
+- 目标为 Windows 10/11 x64，不需要管理员权限，不依赖 WSL，不修改系统 PATH、注册表或全局执行策略。
+- 能用 Git 时，先检查目标目录；不存在才 clone 上述公开仓库。已存在时先读取状态和修改，不重置或覆盖。
+- 没有 Git 时，可以从该仓库的 GitHub 页面下载源码 ZIP，解压到新的目标目录，不要求先安装全局 Git。
+- 先读 README.md、AGENTS.md、dependencies.lock.json、docs/PLATFORM_GUIDE.txt、docs/LOCALIZATION_WORKFLOW.txt 和 docs/DOWNLOADS_AND_ENVIRONMENT.txt。
+- 记录源码提交/版本或下载来源。若发现我已有其它项目工程，保留归属、状态和文件，不把它们当空目录。
+
+2. 实际安装本地依赖
+- 在仓库目录执行以下命令；ExecutionPolicy Bypass 仅作用于本进程，不修改系统配置：
+  powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Initialize_Environment.ps1
+- 如已给缓存目录，追加 -CacheDirectory "<缓存绝对路径>"。缓存中的文件也必须匹配 dependencies.lock.json 的完整 SHA-256。
+- 此入口先准备便携 Python，再安装锁定版本的 Arm GNU Toolchain、RGBDS、官方 mGBA；依赖放在本仓库 runtime 下。
+- 文件身份不符、网络失败或目标目录来源不明时，保留已有文件，查清具体原因；不得随意删除断言、关闭证书校验或换成不明下载源。
+- 如果 AI 执行主体在 WSL，文件读取可以桥接，但初始化脚本和本次 Windows 环境检查必须实际通过 Windows powershell.exe、包内 python.exe 和 .exe 运行，不能把 Linux 测试冒充 Windows 通过。
+
+3. 核对真实结果
+- 检查初始化进程退出码、环境报告和自制程序测试结果；报告位于 reports，文件名以本次输出为准。
+- 确认 Python、Arm gcc/as/ld/objcopy/objdump、RGBDS 和官方 mGBA 的实际路径/版本与锁定配置一致。
+- 自测只使用仓库自制源码，验证三平台构建、ROM 身份、带前像补丁、拒绝错误输入及独立项目初始化；不使用商业 ROM。
+- 同环境已有通过证据且未受影响时可沿用，并说明依据；必要时可用 -SkipSelfTest 跳过重复自测，不能把跳过写成新通过。
+
+4. 正确处理可选后端
+- tools/windows_mgba 的认证 TCP、暂停逐帧和私有 GDB 控制需要特定定制后端；本仓库当前不提供其二进制。
+- 官方 mGBA 已安装不代表这些扩展可用。若缺少后端，明确报告 optional_headless=not_available，并给出已就绪的基础能力；不能偷偷下载私有包或冒称所有功能通过。
+- 只有我另行提供来源、许可与版本匹配的后端时，才在 tools/windows_mgba/bin 放置本地副本并执行：
+  .\python.cmd tools\check_environment.py --require-headless
+  .\python.cmd tools\self_test.py --with-headless
+- 我没有提供该组件时，不要让可选缺项阻止其它基础依赖初始化，也不要自行开发或发布一个未验后端来填数。
+
+5. 完成初始化交付
+- 运行 .\python.cmd tools\verify_package.py 核对公开源码文件清单。
+- 给出：本地路径、源码版本、依赖安装/校验结果、实际执行的测试、报告路径、基础环境状态和可选扩展状态。
+- Open_AI_Shell.cmd 用于之后的 AI 操作；Open_mGBA.cmd 用于官方图形模拟器。PowerShell 调本地 Python 时使用 .\python.cmd。
+- 原始 ROM、SAV、BIOS、会话令牌和个人配置不得上传仓库。runtime/workspace/reports/下载缓存按 .gitignore 保持本地。
+- 工具环境初始化不等于任何商业游戏汉化、BUG 修复、正常保存兼容或真机验收。完成上述范围后停止，等我给具体项目。
