@@ -1,0 +1,4 @@
+# Preserve exact source bytes so PACKAGE_MANIFEST.json works on every OS.
+* -text
+*.cmd whitespace=cr-at-eol
+tools/windows_mgba/MGBA_LICENSE.txt whitespace=-blank-at-eol

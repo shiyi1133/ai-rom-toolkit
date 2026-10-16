@@ -5,6 +5,11 @@
   "distribution": "source-only; dependencies installed locally",
   "files": [
     {
+      "path": ".gitattributes",
+      "bytes": 170,
+      "sha256": "1b1a5d3c55db4225729c685da96c99bb53ab866fa0cc12666639716c875111a4"
+    },
+    {
       "path": ".gitignore",
       "bytes": 257,
       "sha256": "47133abcd99af9ee85f2d7ecc2b6131408c9de25ef9eb118dbedc9327ca1bf28"
@@ -96,8 +101,8 @@
     },
     {
       "path": "docs/cases/GURANBO_OVERLAP.txt",
-      "bytes": 1340,
-      "sha256": "e3ded4448ed15d7c70683ef3f53dd0c8b3ec12e37f467d1976964b2d74ea08ba"
+      "bytes": 1339,
+      "sha256": "a8b0eb5abf187a9a511302fc632bfebc2b8e9f0ebaae04312ca91c332aafb833"
     },
     {
       "path": "env.cmd",
@@ -250,7 +255,7 @@
       "sha256": "53f6f547f0564f0249e271a1bb541ed6e17ef346745424d478f8c84f19dae6f6"
     }
   ],
-  "total_files": 49,
-  "total_bytes": 178678,
+  "total_files": 50,
+  "total_bytes": 178847,
   "game_roms_saves_binaries_sessions_included": false
 }
