@@ -370,8 +370,8 @@
     },
     {
       "path": "prompts/07_FONT_SETUP.txt",
-      "bytes": 2208,
-      "sha256": "3fca98bd021525bab1b94594c64a20168d48dff7020fb43a764e6a88060bbaac"
+      "bytes": 2482,
+      "sha256": "2b27368ad940d4e4986d18844b308c3c35d4fcd02c758b52e44371717579228e"
     },
     {
       "path": "tools/font_tool.py",
@@ -390,5 +390,5 @@
     }
   ],
   "total_files": 75,
-  "total_bytes": 43222684
+  "total_bytes": 43222958
 }

@@ -327,7 +327,7 @@
     {
       "path": "fonts/FONT_MANIFEST.json",
       "bytes": 14077,
-      "sha256": "16168ab8ecf25f82048dbe3a5fbd0b4c674f7d5ffab31323c5a4ae31f60ed7ba"
+      "sha256": "bee67feb71d86a5ea8b217a199cf04341a199a9514d0a6e46e443081bcb9f4ac"
     },
     {
       "path": "fonts/FONT_SOURCES.json",
@@ -581,8 +581,8 @@
     },
     {
       "path": "prompts/07_FONT_SETUP.txt",
-      "bytes": 2208,
-      "sha256": "3fca98bd021525bab1b94594c64a20168d48dff7020fb43a764e6a88060bbaac"
+      "bytes": 2482,
+      "sha256": "2b27368ad940d4e4986d18844b308c3c35d4fcd02c758b52e44371717579228e"
     },
     {
       "path": "python.cmd",
@@ -726,7 +726,7 @@
     }
   ],
   "total_files": 144,
-  "total_bytes": 43467187,
+  "total_bytes": 43467461,
   "game_roms_saves_runtime_binaries_sessions_included": false,
   "font_assets_included": true
 }

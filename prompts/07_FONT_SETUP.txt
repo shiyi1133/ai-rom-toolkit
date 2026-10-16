@@ -6,6 +6,8 @@
 
 先读project.json、项目AGENTS.md、工具包FONT_README_CN.txt、docs/FONT_USAGE.txt及LOCALIZATION_WORKFLOW.txt。
 fonts/FONT_CATALOG.json有实际字体，fonts/FONT_SOURCES.json有下载来源与校验；不从Windows系统字体目录复制未核实许可的文件。
+本包所附字体均为点阵字体，已提供可直接使用的BDF/HEX原像素字模；400.ttf也附有配套的8×12 BDF子集。
+可直接用现成点阵字模检查缺字、预览和导出mono1/GB-GBC 2bpp/GBA 4bpp，无需重新描字或把TTF/OTF重新栅格化。
 先检查真实译文的字形覆盖，并用font_tool.py生成原像素预览。缺字列出字符与Unicode，不静默用问号/默认字形代替。
 8/10/12px读取Fusion Pixel zh-Hans BDF，16px读取Unifont HEX；TTF/OTF只作桌面字体备选，不用缩放其它字号冒充点阵。
 对每个实际交付字号分别确定字宽、步进、行距、容量、控制码/变量、码表、字库选择入口、指针、VRAM缓存和普通/大字布局。
