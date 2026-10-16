@@ -1,0 +1,22 @@
+﻿【为当前已授权汉化项目接入中文字库】
+
+项目目录：<填写绝对路径>
+本次文本/窗口/字号范围：<填写>
+优先风格：<8/10/12/16像素，或先比较>
+
+先读project.json、项目AGENTS.md、工具包FONT_README_CN.txt、docs/FONT_USAGE.txt及LOCALIZATION_WORKFLOW.txt。
+fonts/FONT_CATALOG.json有实际字体，fonts/FONT_SOURCES.json有下载来源与校验；不从Windows系统字体目录复制未核实许可的文件。
+先检查真实译文的字形覆盖，并用font_tool.py生成原像素预览。缺字列出字符与Unicode，不静默用问号/默认字形代替。
+8/10/12px读取Fusion Pixel zh-Hans BDF，16px读取Unifont HEX；TTF/OTF只作桌面字体备选，不用缩放其它字号冒充点阵。
+对每个实际交付字号分别确定字宽、步进、行距、容量、控制码/变量、码表、字库选择入口、指针、VRAM缓存和普通/大字布局。
+按真实取字程序决定mono1/GB-GBC 2bpp/GBA 4bpp或游戏专用格式。font_tool.py的slot不是游戏字符码，标准图块不保证可直接写入。
+10/12px图块默认补齐到16x16，只是存储留白；不能据此把游戏字距也改成16或声称排版已验收。
+GB/GBC确认MBC与bank保存恢复；GBA确认ARM/Thumb、BG/OBJ与动态缓存。字体、文本和注入代码使用统一占用表。
+所有修改锁定确切ROM哈希和前像，保留原件/存档/旧版，只写新输出。先做代表性字形/长句/变量/选项样本，再完成我指定范围。
+保留字体版权、OFL/上游许可、使用字形列表、映射、构建源码和输出哈希。
+报告静态/格式回读、明确模拟器场景、用户复测、取名与普通保存/重启各自结果；字体预览不作为游戏内显示证明。
+
+用户指定字体：400.ttf
+已附fonts/user-provided/400.ttf（MuzaiPixel）原件，用户指定用此字体时优先采用它。
+便利用的400-native-8x12.bdf是15764条字形的无裁切子集，另168条仍在完整原件中；先读docs/FONT_400_README.txt并对实际译文检查覆盖。
+不得将12px高度误当12px宽度；典型汉字宽8，西文步进另读。保留原TTF、原始点阵、许可和转换记录。

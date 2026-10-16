@@ -1,0 +1,11 @@
+﻿slot	unicode	character	byte_offset	byte_length	source_advance
+0	U+6C49	汉	0	24	12
+1	U+5316	化	24	24	12
+2	U+6D4B	测	48	24	12
+3	U+8BD5	试	72	24	12
+4	U+0041	A	96	24	6
+5	U+0042	B	120	24	6
+6	U+0031	1	144	24	6
+7	U+0032	2	168	24	6
+8	U+FF0C	，	192	24	12
+9	U+3002	。	216	24	12

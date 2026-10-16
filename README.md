@@ -16,6 +16,7 @@
 | 游戏改版：功能实现与交付 | [04_MOD_GAME.txt](prompts/04_MOD_GAME.txt) |
 | 未知机制/金手指只读调查 | [05_INVESTIGATE_MECHANIC.txt](prompts/05_INVESTIGATE_MECHANIC.txt) |
 | 已有改版移植或补丁组合 | [06_PORT_OR_COMBINE_MODS.txt](prompts/06_PORT_OR_COMBINE_MODS.txt) |
+| 字体选择、缺字检查与接入 | [07_FONT_SETUP.txt](prompts/07_FONT_SETUP.txt) |
 
 提示词是通用流程，不内置某款游戏的哈希、地址或补丁；使用前填写具体项目与授权范围。初始化工具不启动游戏任务，也不恢复暂停项目。
 
@@ -70,6 +71,28 @@ GB/GBC 的 `--platform` 改为 `gb` / `gbc`。`init` 可加 `--save "<SAV路径>
 
 `romkit.py patch` 仅处理等长定点写入；不自动汇编/重定位、扩 ROM、判断空间所有权、证明补丁语义或生成 IPS/BPS。复杂项目须保留自己的源码构建器、依赖与验证。
 
+## 中文字体与字模
+
+仓库内已附 Fusion Pixel 8/10/12px、GNU Unifont 16px，以及用户指定的 `400.ttf`（MuzaiPixel）原件、原点阵源和 8×12 BDF 子集。无需安装系统字体或额外模块。字体版本、覆盖、来源与完整 SHA-256 见 [字体目录](fonts/FONT_CATALOG.json) 和 [来源记录](fonts/FONT_SOURCES.json)。
+
+`400.ttf` 完整保留；其无裁切 BDF 子集含 15,764 个 Unicode 字形，另 168 个超格/悬挂字形仍在原件中。转换子集使用名称 ROM Toolkit 400 Grid12，范围见 [400 字体说明](docs/FONT_400_README.txt)。
+
+初始化后，在仓库根目录运行：
+
+```powershell
+# Windows
+.\python.cmd tools/font_tool.py verify-assets
+.\python.cmd tools/font_tool.py check --font fonts/user-provided/400-native-8x12.bdf --chars-file fonts/SAMPLE_CHARACTERS.txt
+```
+
+```bash
+# Linux
+bash python.sh tools/font_tool.py verify-assets
+bash python.sh tools/font_tool.py check --font fonts/user-provided/400-native-8x12.bdf --chars-file fonts/SAMPLE_CHARACTERS.txt
+```
+
+工具支持逐像素预览、缺字检查、1bpp / GB-GBC 2bpp / GBA 4bpp 导出，见 [字体操作指南](docs/FONT_USAGE.txt) 与 [预览](font_previews/)。导出的 slot 需要项目码表映射；这些检查不代表游戏内字体、布局或存档已验收。字体原版权和许可保存在 [licenses/fonts](licenses/fonts/)。
+
 ## 可选无头扩展
 
 官方 mGBA 不保证定制暂停逐帧、认证 TCP、私有 GDB 接口。`tools/windows_mgba/` 只提供依赖特定 Windows 后端的脚本，当前不分发定制二进制或尚未整理的修改源码。Linux 未提供对应定制后端。
@@ -92,7 +115,9 @@ Windows 用户自行取得来源、许可、版本匹配的后端后，按 [构�
 bash python.sh -m unittest discover -s tests -v
 ```
 
-原创代码、文档、提示词、模板与自制示例采用 [MIT](LICENSE)，外部依赖各自许可见 [第三方说明](THIRD_PARTY_NOTICES.md)。
+字体资源与格式检查：Windows 运行 `.\python.cmd tools/test_font_tool.py`；Linux 运行 `bash python.sh tools/test_font_tool.py`。字体清单校验使用 `tools/font_tool.py verify-assets`。
+
+原创代码、文档、提示词、模板与自制示例采用 [MIT](LICENSE)；所附第三方字体及其衍生字模遵从各自许可，见 [第三方说明](THIRD_PARTY_NOTICES.md)。
 
 仓库不包含商业 ROM、BIOS、玩家 SAV、即时状态、令牌、运行会话或第三方程序包。`runtime/`、`workspace/`、`reports/` 与缓存都排除在 Git 外。请仅处理自己有权使用的输入。
 

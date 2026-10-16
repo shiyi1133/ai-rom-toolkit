@@ -1,0 +1,394 @@
+{
+  "date": "2026-10-16",
+  "package": "AI_ROM_Font_Supplement_20261016_with_400",
+  "font_sizes": [
+    8,
+    10,
+    12,
+    16
+  ],
+  "font_variants": 5,
+  "user_font": "fonts/user-provided/400.ttf",
+  "source_ttf_sha256": "e07ef0f7b26991436f600e414ee5286164bd5ea1d779eb8914975d69af23e6f8",
+  "game_roms_modified": false,
+  "distribution": "Public source repository font assets; machine-local reports excluded",
+  "files": [
+    {
+      "path": "FONT_README_CN.txt",
+      "bytes": 1548,
+      "sha256": "331d111c22e095cf8c3b300f6ec0ee3c1e78c95d8191e6f9c060f030610ff484"
+    },
+    {
+      "path": "docs/FONT_400_README.txt",
+      "bytes": 2657,
+      "sha256": "c7f0834ffeeb3d914f7511d0312cf1c73e59b8b48b19ca41f64069982cac4536"
+    },
+    {
+      "path": "docs/FONT_USAGE.txt",
+      "bytes": 4909,
+      "sha256": "01ecf9b5a5c5d0b7d3308712c198c6a286e3b74281180170fdc83819655f9409"
+    },
+    {
+      "path": "font_examples/fusion12_gb2/Fusion-Pixel-OFL.txt",
+      "bytes": 4418,
+      "sha256": "bc518cf64b8032c07690f33cc270c35c179255a6ac8efa7c165ebae7e8f76a63"
+    },
+    {
+      "path": "font_examples/fusion12_gb2/LICENSE_REMINDER.txt",
+      "bytes": 95,
+      "sha256": "fb078c34cc96e39967ecc8e674feed09f2889525bec4fc9cd420bd5937a75b31"
+    },
+    {
+      "path": "font_examples/fusion12_gb2/Unifont-Font-Metadata.txt",
+      "bytes": 567,
+      "sha256": "a48f650afaa9d6b20b198fff99661e320fe69d9c7e7145fc3290cacfdaed6395"
+    },
+    {
+      "path": "font_examples/fusion12_gb2/Unifont-LICENSE.txt",
+      "bytes": 24142,
+      "sha256": "1e74cb82bf476843e97c2596297b04219b1a7e51f7238944a8c031cb9401fa87"
+    },
+    {
+      "path": "font_examples/fusion12_gb2/glyphs.bin",
+      "bytes": 640,
+      "sha256": "299c6a0dc321cb5f36f1ee0afa5574836282673a8329bc392ce545439016616d"
+    },
+    {
+      "path": "font_examples/fusion12_gb2/glyphs.json",
+      "bytes": 2676,
+      "sha256": "b2cf0033e092b29724f20e86ee2f8a3b4ef6f880b3b115dbb8f1aa4cc7f23fef"
+    },
+    {
+      "path": "font_examples/fusion12_gb2/unicode_to_slot.tsv",
+      "bytes": 280,
+      "sha256": "e1e488bb646b0398c0e258c3ef0fcb89a517ee50972f765876361fa5c3805a9c"
+    },
+    {
+      "path": "font_examples/fusion12_gba4/Fusion-Pixel-OFL.txt",
+      "bytes": 4418,
+      "sha256": "bc518cf64b8032c07690f33cc270c35c179255a6ac8efa7c165ebae7e8f76a63"
+    },
+    {
+      "path": "font_examples/fusion12_gba4/LICENSE_REMINDER.txt",
+      "bytes": 95,
+      "sha256": "fb078c34cc96e39967ecc8e674feed09f2889525bec4fc9cd420bd5937a75b31"
+    },
+    {
+      "path": "font_examples/fusion12_gba4/Unifont-Font-Metadata.txt",
+      "bytes": 567,
+      "sha256": "a48f650afaa9d6b20b198fff99661e320fe69d9c7e7145fc3290cacfdaed6395"
+    },
+    {
+      "path": "font_examples/fusion12_gba4/Unifont-LICENSE.txt",
+      "bytes": 24142,
+      "sha256": "1e74cb82bf476843e97c2596297b04219b1a7e51f7238944a8c031cb9401fa87"
+    },
+    {
+      "path": "font_examples/fusion12_gba4/glyphs.bin",
+      "bytes": 1280,
+      "sha256": "860da3dd9282b59475157815229653aaf416105bc616e2a6f95afddb01049e7c"
+    },
+    {
+      "path": "font_examples/fusion12_gba4/glyphs.json",
+      "bytes": 2690,
+      "sha256": "d0641817f931b10040f8b1dc3d961370050468607efb15ea84a9e0462c7b3460"
+    },
+    {
+      "path": "font_examples/fusion12_gba4/unicode_to_slot.tsv",
+      "bytes": 293,
+      "sha256": "23791f292ae9c1f1569ba2db2bd9a8bda1ce44c30abb5b5170a1e405daf9fcb2"
+    },
+    {
+      "path": "font_examples/fusion12_mono1/Fusion-Pixel-OFL.txt",
+      "bytes": 4418,
+      "sha256": "bc518cf64b8032c07690f33cc270c35c179255a6ac8efa7c165ebae7e8f76a63"
+    },
+    {
+      "path": "font_examples/fusion12_mono1/LICENSE_REMINDER.txt",
+      "bytes": 95,
+      "sha256": "fb078c34cc96e39967ecc8e674feed09f2889525bec4fc9cd420bd5937a75b31"
+    },
+    {
+      "path": "font_examples/fusion12_mono1/Unifont-Font-Metadata.txt",
+      "bytes": 567,
+      "sha256": "a48f650afaa9d6b20b198fff99661e320fe69d9c7e7145fc3290cacfdaed6395"
+    },
+    {
+      "path": "font_examples/fusion12_mono1/Unifont-LICENSE.txt",
+      "bytes": 24142,
+      "sha256": "1e74cb82bf476843e97c2596297b04219b1a7e51f7238944a8c031cb9401fa87"
+    },
+    {
+      "path": "font_examples/fusion12_mono1/glyphs.bin",
+      "bytes": 240,
+      "sha256": "ccfd2d229f621c572f2469cf2ed7df696e2b6a16580b5feba4680b480f0612fd"
+    },
+    {
+      "path": "font_examples/fusion12_mono1/glyphs.json",
+      "bytes": 2675,
+      "sha256": "195c709213254c5c7635709b48f8639bb2e5cda5d9d4d44d2b2a45714667af52"
+    },
+    {
+      "path": "font_examples/fusion12_mono1/unicode_to_slot.tsv",
+      "bytes": 277,
+      "sha256": "050ec5e6984ad6964e08ba17ad8a4687d8599b58b216f15ed2062331ca143d91"
+    },
+    {
+      "path": "font_previews/400-muzaipixel-8x12.png",
+      "bytes": 2841,
+      "sha256": "17dfc31d2ca2f4cc6963df5bc3d0da15293bb5c7ebb5b60cbb6f1397cb400db8"
+    },
+    {
+      "path": "font_previews/all_sizes.png",
+      "bytes": 10692,
+      "sha256": "2f88fdda5fd9e10223cf155d9d1b660901c6c9929b2e8bde98fe4ec78cfd8b2a"
+    },
+    {
+      "path": "font_previews/fusion-10.png",
+      "bytes": 3124,
+      "sha256": "32fb9f076cdfb712f1bd536b608396eb2f9e65ee6ab89a047a82083c1126b69a"
+    },
+    {
+      "path": "font_previews/fusion-12.png",
+      "bytes": 4392,
+      "sha256": "dd2b07dc4ecf6c57061b58289f96b863d0f1a660791bda6d8d5686a50592be9d"
+    },
+    {
+      "path": "font_previews/fusion-8.png",
+      "bytes": 2204,
+      "sha256": "45500859a844c3a0250232e347311d71c9595d1af84659e0fa87a71feb1915a8"
+    },
+    {
+      "path": "font_previews/unifont-16.png",
+      "bytes": 6098,
+      "sha256": "eb9f736173448287539f453b0c235d1dddd1452c70aa21df6eb005da9578332b"
+    },
+    {
+      "path": "fonts/FONT_CATALOG.json",
+      "bytes": 3673,
+      "sha256": "6f132fec27d45c9d195953f2ef00fe81feeb362451c64fde45e2c3830b167037"
+    },
+    {
+      "path": "fonts/FONT_SOURCES.json",
+      "bytes": 4874,
+      "sha256": "4ffa59ba5c09b32d7762c34496443c6ecf4b52f4661a3eb1626ebe72e3d3c97d"
+    },
+    {
+      "path": "fonts/SAMPLE_CHARACTERS.txt",
+      "bytes": 107,
+      "sha256": "dcf6d7e5b6ebd6d8c6cd454267feb86bc7d94461c9004fab136149189a2dd7ce"
+    },
+    {
+      "path": "fonts/fusion-pixel/fusion-pixel-10px-monospaced-zh_hans.bdf",
+      "bytes": 3274861,
+      "sha256": "08f9ccc3866282137c8b1f56697c0a4d12fb367b34b0f7ad17f4608cc1ae515d"
+    },
+    {
+      "path": "fonts/fusion-pixel/fusion-pixel-10px-monospaced-zh_hans.ttf",
+      "bytes": 4017188,
+      "sha256": "0606fac52ffd410d6291151e26816606469fd8ea121e2bf1d8b8788635fb934e"
+    },
+    {
+      "path": "fonts/fusion-pixel/fusion-pixel-12px-monospaced-zh_hans.bdf",
+      "bytes": 5207301,
+      "sha256": "bb2cdfa029674d83ad9fc6b01bba11752f61779cae1219a722c7ccee96b2d0ae"
+    },
+    {
+      "path": "fonts/fusion-pixel/fusion-pixel-12px-monospaced-zh_hans.ttf",
+      "bytes": 7040712,
+      "sha256": "339f3c71531a6b3caae1023c68873eea45554e87571e8fac5c8954abe27fbff1"
+    },
+    {
+      "path": "fonts/fusion-pixel/fusion-pixel-8px-monospaced-zh_hans.bdf",
+      "bytes": 3095936,
+      "sha256": "3c00ccab762c0c75967eea724f5cd57feb544be7a0814d06233160ef9482a50b"
+    },
+    {
+      "path": "fonts/fusion-pixel/fusion-pixel-8px-monospaced-zh_hans.ttf",
+      "bytes": 3653040,
+      "sha256": "ddab11c7e027cec9a842b0ffce6640cca2d50ca2894b34dd49769944bdc03684"
+    },
+    {
+      "path": "fonts/unifont/unifont-17.0.05.hex",
+      "bytes": 3762996,
+      "sha256": "fd79af3613ec1b984a98d33428fdd43fcf06018d18059960d78edeb63d958622"
+    },
+    {
+      "path": "fonts/unifont/unifont-17.0.05.otf",
+      "bytes": 5321628,
+      "sha256": "85701ab9b1e251ee16f4df00b13f22eac311d72b7dab427a7d975fe7f5064702"
+    },
+    {
+      "path": "fonts/user-provided/400-native-8x12-excluded.json",
+      "bytes": 20372,
+      "sha256": "31515f789377faf9c6483620019d87bf71ee16ccbc1bedef1d81f765c3a6ea03"
+    },
+    {
+      "path": "fonts/user-provided/400-native-8x12.bdf",
+      "bytes": 1865069,
+      "sha256": "80983822acfff5a1674a90d832191894da6ee06b76cf85ec635542bbabf8806f"
+    },
+    {
+      "path": "fonts/user-provided/400-source-info.json",
+      "bytes": 517,
+      "sha256": "c0dd8230b5ed8daa84f7f928b67906ccb31da6b9082d5abd8dfd0b8785a0bef6"
+    },
+    {
+      "path": "fonts/user-provided/400-upstream-source.kbitx",
+      "bytes": 1620798,
+      "sha256": "a0c3e472657c7c987475a70476b3a169cdc427894196bc18598bba3e91bb5b55"
+    },
+    {
+      "path": "fonts/user-provided/400.ttf",
+      "bytes": 4025404,
+      "sha256": "e07ef0f7b26991436f600e414ee5286164bd5ea1d779eb8914975d69af23e6f8"
+    },
+    {
+      "path": "licenses/fonts/400-Font-Metadata.json",
+      "bytes": 2047,
+      "sha256": "4b59f169a6ebfc69bf5e3f9b5d037ec8155fed1e0fc074075c94893d3c66cb44"
+    },
+    {
+      "path": "licenses/fonts/Fusion-Pixel-OFL.txt",
+      "bytes": 4418,
+      "sha256": "bc518cf64b8032c07690f33cc270c35c179255a6ac8efa7c165ebae7e8f76a63"
+    },
+    {
+      "path": "licenses/fonts/MuzaiPixel-OFL.md",
+      "bytes": 9824,
+      "sha256": "1acdf645c71a905883946b82fa4a8bbca1625627426260a46465ea7657f9392e"
+    },
+    {
+      "path": "licenses/fonts/Unifont-Font-Metadata.txt",
+      "bytes": 567,
+      "sha256": "a48f650afaa9d6b20b198fff99661e320fe69d9c7e7145fc3290cacfdaed6395"
+    },
+    {
+      "path": "licenses/fonts/Unifont-LICENSE.txt",
+      "bytes": 24142,
+      "sha256": "1e74cb82bf476843e97c2596297b04219b1a7e51f7238944a8c031cb9401fa87"
+    },
+    {
+      "path": "licenses/fonts/fusion-assets/10-bdf/LICENSES/ark-pixel/OFL.txt",
+      "bytes": 4412,
+      "sha256": "3ab41567e68e3988ba1ef16dd2644eca95ca5648ea12e7d46e6287fc0bbe5aee"
+    },
+    {
+      "path": "licenses/fonts/fusion-assets/10-bdf/LICENSES/boutique-bitmap-9x9/OFL.txt",
+      "bytes": 6566,
+      "sha256": "265f3814079511b3f3fce9003cb60a1402fa792849c5cae79e5998939eb02617"
+    },
+    {
+      "path": "licenses/fonts/fusion-assets/10-bdf/LICENSES/galmuri/LICENSE.txt",
+      "bytes": 4360,
+      "sha256": "86a3ee9495f942f0243f18c103da9faca27adb88142613edb8bb852e56c892c1"
+    },
+    {
+      "path": "licenses/fonts/fusion-assets/10-ttf/LICENSES/ark-pixel/OFL.txt",
+      "bytes": 4412,
+      "sha256": "3ab41567e68e3988ba1ef16dd2644eca95ca5648ea12e7d46e6287fc0bbe5aee"
+    },
+    {
+      "path": "licenses/fonts/fusion-assets/10-ttf/LICENSES/boutique-bitmap-9x9/OFL.txt",
+      "bytes": 6566,
+      "sha256": "265f3814079511b3f3fce9003cb60a1402fa792849c5cae79e5998939eb02617"
+    },
+    {
+      "path": "licenses/fonts/fusion-assets/10-ttf/LICENSES/galmuri/LICENSE.txt",
+      "bytes": 4360,
+      "sha256": "86a3ee9495f942f0243f18c103da9faca27adb88142613edb8bb852e56c892c1"
+    },
+    {
+      "path": "licenses/fonts/fusion-assets/12-bdf/LICENSES/ark-pixel/OFL.txt",
+      "bytes": 4412,
+      "sha256": "3ab41567e68e3988ba1ef16dd2644eca95ca5648ea12e7d46e6287fc0bbe5aee"
+    },
+    {
+      "path": "licenses/fonts/fusion-assets/12-bdf/LICENSES/cubic-11/OFL.txt",
+      "bytes": 5364,
+      "sha256": "2b6e5938e5cffa0b9e183bd05f8c363e174e7ebed1a0556e2855fd1707fa2188"
+    },
+    {
+      "path": "licenses/fonts/fusion-assets/12-bdf/LICENSES/galmuri/LICENSE.txt",
+      "bytes": 4360,
+      "sha256": "86a3ee9495f942f0243f18c103da9faca27adb88142613edb8bb852e56c892c1"
+    },
+    {
+      "path": "licenses/fonts/fusion-assets/12-ttf/LICENSES/ark-pixel/OFL.txt",
+      "bytes": 4412,
+      "sha256": "3ab41567e68e3988ba1ef16dd2644eca95ca5648ea12e7d46e6287fc0bbe5aee"
+    },
+    {
+      "path": "licenses/fonts/fusion-assets/12-ttf/LICENSES/cubic-11/OFL.txt",
+      "bytes": 5364,
+      "sha256": "2b6e5938e5cffa0b9e183bd05f8c363e174e7ebed1a0556e2855fd1707fa2188"
+    },
+    {
+      "path": "licenses/fonts/fusion-assets/12-ttf/LICENSES/galmuri/LICENSE.txt",
+      "bytes": 4360,
+      "sha256": "86a3ee9495f942f0243f18c103da9faca27adb88142613edb8bb852e56c892c1"
+    },
+    {
+      "path": "licenses/fonts/fusion-assets/8-bdf/LICENSES/boutique-bitmap-7x7/OFL.txt",
+      "bytes": 5463,
+      "sha256": "ad588b5ce58a02179b806381339fd380e5110771f2fa91279af026fd3ab97002"
+    },
+    {
+      "path": "licenses/fonts/fusion-assets/8-bdf/LICENSES/galmuri/LICENSE.txt",
+      "bytes": 4360,
+      "sha256": "86a3ee9495f942f0243f18c103da9faca27adb88142613edb8bb852e56c892c1"
+    },
+    {
+      "path": "licenses/fonts/fusion-assets/8-bdf/LICENSES/misaki/misaki.txt",
+      "bytes": 9016,
+      "sha256": "82929cc3b34c79b6a67f21fe137c7bb165589c9e34ba1441611e493afd67dfca"
+    },
+    {
+      "path": "licenses/fonts/fusion-assets/8-bdf/LICENSES/miseki-bitmap/LICENSE.txt",
+      "bytes": 4358,
+      "sha256": "e855b45b384d37c9a778119271bd9c32706e3f1f9f278de0ad47347606eea846"
+    },
+    {
+      "path": "licenses/fonts/fusion-assets/8-ttf/LICENSES/boutique-bitmap-7x7/OFL.txt",
+      "bytes": 5463,
+      "sha256": "ad588b5ce58a02179b806381339fd380e5110771f2fa91279af026fd3ab97002"
+    },
+    {
+      "path": "licenses/fonts/fusion-assets/8-ttf/LICENSES/galmuri/LICENSE.txt",
+      "bytes": 4360,
+      "sha256": "86a3ee9495f942f0243f18c103da9faca27adb88142613edb8bb852e56c892c1"
+    },
+    {
+      "path": "licenses/fonts/fusion-assets/8-ttf/LICENSES/misaki/misaki.txt",
+      "bytes": 9016,
+      "sha256": "82929cc3b34c79b6a67f21fe137c7bb165589c9e34ba1441611e493afd67dfca"
+    },
+    {
+      "path": "licenses/fonts/fusion-assets/8-ttf/LICENSES/miseki-bitmap/LICENSE.txt",
+      "bytes": 4358,
+      "sha256": "e855b45b384d37c9a778119271bd9c32706e3f1f9f278de0ad47347606eea846"
+    },
+    {
+      "path": "prompts/07_FONT_SETUP.txt",
+      "bytes": 2208,
+      "sha256": "3fca98bd021525bab1b94594c64a20168d48dff7020fb43a764e6a88060bbaac"
+    },
+    {
+      "path": "tools/font_tool.py",
+      "bytes": 11798,
+      "sha256": "d840eaeaae12a723251996c269644629a435bb4792e5287ce89e150e1d6b8b92"
+    },
+    {
+      "path": "tools/kbitx_to_bdf.py",
+      "bytes": 4865,
+      "sha256": "37510272acab31567dc81073a9ae28d0d803a85ecb9f3b8b6f90d2458f261236"
+    },
+    {
+      "path": "tools/test_font_tool.py",
+      "bytes": 5815,
+      "sha256": "18ba2fb9d1c1e8b76934ca085ce9141887faf0fba63a8a0eb5e512d5b9caa180"
+    }
+  ],
+  "total_files": 75,
+  "total_bytes": 43222684
+}

@@ -1,0 +1,153 @@
+{
+  "format": "gba4",
+  "cell_width": 16,
+  "cell_height": 16,
+  "ink_index": 1,
+  "glyph_count": 10,
+  "source_font": "fusion-pixel-12px-monospaced-zh_hans.bdf",
+  "source_sha256": "bb2cdfa029674d83ad9fc6b01bba11752f61779cae1219a722c7ccee96b2d0ae",
+  "output_sha256": "860da3dd9282b59475157815229653aaf416105bc616e2a6f95afddb01049e7c",
+  "glyphs": [
+    {
+      "slot": 0,
+      "char": "汉",
+      "unicode": "U+6C49",
+      "offset": 0,
+      "bytes": 128,
+      "source_advance": 12,
+      "source_bbx": [
+        11,
+        11,
+        0,
+        -2
+      ]
+    },
+    {
+      "slot": 1,
+      "char": "化",
+      "unicode": "U+5316",
+      "offset": 128,
+      "bytes": 128,
+      "source_advance": 12,
+      "source_bbx": [
+        11,
+        11,
+        0,
+        -2
+      ]
+    },
+    {
+      "slot": 2,
+      "char": "测",
+      "unicode": "U+6D4B",
+      "offset": 256,
+      "bytes": 128,
+      "source_advance": 12,
+      "source_bbx": [
+        11,
+        11,
+        0,
+        -2
+      ]
+    },
+    {
+      "slot": 3,
+      "char": "试",
+      "unicode": "U+8BD5",
+      "offset": 384,
+      "bytes": 128,
+      "source_advance": 12,
+      "source_bbx": [
+        11,
+        11,
+        0,
+        -2
+      ]
+    },
+    {
+      "slot": 4,
+      "char": "A",
+      "unicode": "U+0041",
+      "offset": 512,
+      "bytes": 128,
+      "source_advance": 6,
+      "source_bbx": [
+        5,
+        8,
+        0,
+        0
+      ]
+    },
+    {
+      "slot": 5,
+      "char": "B",
+      "unicode": "U+0042",
+      "offset": 640,
+      "bytes": 128,
+      "source_advance": 6,
+      "source_bbx": [
+        5,
+        8,
+        0,
+        0
+      ]
+    },
+    {
+      "slot": 6,
+      "char": "1",
+      "unicode": "U+0031",
+      "offset": 768,
+      "bytes": 128,
+      "source_advance": 6,
+      "source_bbx": [
+        5,
+        8,
+        0,
+        0
+      ]
+    },
+    {
+      "slot": 7,
+      "char": "2",
+      "unicode": "U+0032",
+      "offset": 896,
+      "bytes": 128,
+      "source_advance": 6,
+      "source_bbx": [
+        5,
+        8,
+        0,
+        0
+      ]
+    },
+    {
+      "slot": 8,
+      "char": "，",
+      "unicode": "U+FF0C",
+      "offset": 1024,
+      "bytes": 128,
+      "source_advance": 12,
+      "source_bbx": [
+        2,
+        4,
+        2,
+        -2
+      ]
+    },
+    {
+      "slot": 9,
+      "char": "。",
+      "unicode": "U+3002",
+      "offset": 1152,
+      "bytes": 128,
+      "source_advance": 12,
+      "source_bbx": [
+        4,
+        4,
+        1,
+        -2
+      ]
+    }
+  ],
+  "warning": "Slots are NOT game character codes. This is font data, not a ROM patch. Retain the source font license and credits."
+}

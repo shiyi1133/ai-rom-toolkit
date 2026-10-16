@@ -29,3 +29,12 @@
 - ARM64、musl/Alpine、macOS、其它发行版、纯服务器缺库场景、完整全新在线安装：not_run。
 - 改版 04/05/06 提示词、指南与空白规格/用例模板：内容/入口检查；未迁入 SHARE 游戏字节、完整反编译、私有后端或游戏测试结论。
 - 原 Windows 便携目录此次只同步改版文档/模板与入口说明，工具/二进制保持原状，历史自测沿用；它与本公开源码版的可选后端状态分别记录。
+
+2026-10-16 字体资源同步
+- 随仓库提供 Fusion Pixel 8/10/12px、GNU Unifont 16px 和用户指定 400.ttf；原字体、上游版权/许可、来源及 SHA-256 同步保留。本节仅描述本次字体检查。
+- 在本仓库文件上执行 tools/test_font_tool.py：Linux/WSL2 Python 3.12.3 与 Windows 原生便携 Python 3.13.16 均通过。每种字体用 43 个代表字符核对 mono1、gb2、gba4 的逐像素回读，并检查 BDF 基线/偏移、位序、PNG CRC、缺字与已有输出拒绝、输入保持不变。
+- 两个环境均通过 tools/font_tool.py verify-assets（75 个字体相关文件）；最终完整清单另由 tools/verify_package.py 核对。
+- 两个环境均将所附 KBITX 重建为 400-native-8x12.bdf，BDF 字节与排除列表分别一致；重复输出按预期拒绝。完整 400.ttf SHA-256 为 e07ef0f7b26991436f600e414ee5286164bd5ea1d779eb8914975d69af23e6f8。
+- BDF 子集含 15,764 条字形；另 168 条超格/悬挂字形只从该便利子集排除，完整 TTF/KBITX 保留。不能把样本文字的格式回读当作全量译文字形覆盖。
+- 以上为资源与格式检查；没有进行任何游戏注入、游戏布局、缓存、取名、保存、商业 ROM、真机或完整流程验收。未改动的初始化、工具链和补丁功能沿用前述检查，本次未重复执行。
+- 字体复测：Windows 使用 .\python.cmd tools/test_font_tool.py；Linux 使用 bash python.sh tools/test_font_tool.py。重建命令见 docs/FONT_400_README.txt。

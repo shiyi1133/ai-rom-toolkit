@@ -1,0 +1,17 @@
+{
+  "source_sha256": "e07ef0f7b26991436f600e414ee5286164bd5ea1d779eb8914975d69af23e6f8",
+  "source_bytes": 4025404,
+  "source_family": "MuzaiPixel",
+  "source_version": "2.0.20241013",
+  "official_original_ttf_byte_exact_match": true,
+  "source_unicode_glyphs": 15932,
+  "derived_bdf_glyphs": 15764,
+  "outside_native_cell": 168,
+  "derived_family_name": "ROM Toolkit 400 Grid12",
+  "native_cell": [
+    8,
+    12
+  ],
+  "upstream": "https://github.com/DWNfonts/MuzaiPixel/tree/2.0.20241013",
+  "license": "OFL-1.1"
+}

@@ -1,0 +1,61 @@
+中文字库、缺字检查与图块导出
+
+一、选字库
+字体路径见 fonts/FONT_CATALOG.json。8/10/12px 使用对应 .bdf，16px 使用 .hex。
+TTF/OTF 用于桌面预览；本工具直接读点阵文件，所以不依赖系统字体、Pillow 或额外安装。
+不把本机宋体/微软雅黑复制进分享包；本仓库所附字体的许可证和版权均在 licenses/fonts。
+查看 font_previews/all_sizes.png。先按真实窗口、普通/大字模式和实机大小比较，不将不同字号的排版验收混用。
+
+二、按真实译文检查覆盖
+把去重前译文或目标字符表保存为项目内 UTF-8 文件，例如 workspace/text/characters.txt。
+换行、回车、Tab不作为字形；空格保留。字符按首次出现顺序去重，Unicode顺序不自动排序。
+仓库根目录命令（先按 README.md 初始化）：
+python tools/font_tool.py check --font fonts/fusion-pixel/fusion-pixel-12px-monospaced-zh_hans.bdf --chars-file workspace/text/characters.txt
+Windows PowerShell 将 python 换成 .\python.cmd；Linux 将 python 换成 bash python.sh。
+缺字时返回退出码2，列出字符与Unicode。不能以同名默认字形、方框或问号冒充覆盖通过。
+10px、12px和16px的覆盖范围各不相同，需要逐项检查；不能假定大字号必然包含所有小字号字符。
+
+三、生成实际文字预览
+python tools/font_tool.py preview --font fonts/fusion-pixel/fusion-pixel-12px-monospaced-zh_hans.bdf --chars-file workspace/text/characters.txt --output workspace/output/font_preview.png --scale 4
+只放大原始像素，不缩放其它字号来伪造字模。任何亮笔画将被裁出目标格时拒绝生成。
+输出文件必须不存在。若先前已有文件，换新名字保留比较。
+
+四、导出 1bpp / 2bpp / 4bpp
+1bpp行格式：
+python tools/font_tool.py export --font fonts/fusion-pixel/fusion-pixel-12px-monospaced-zh_hans.bdf --chars-file workspace/text/characters.txt --format mono1 --output-dir workspace/output/font12_mono1
+GB/GBC标准2bpp图块：
+python tools/font_tool.py export --font fonts/fusion-pixel/fusion-pixel-12px-monospaced-zh_hans.bdf --chars-file workspace/text/characters.txt --format gb2 --output-dir workspace/output/font12_gb2
+GBA标准4bpp图块：
+python tools/font_tool.py export --font fonts/fusion-pixel/fusion-pixel-12px-monospaced-zh_hans.bdf --chars-file workspace/text/characters.txt --format gba4 --output-dir workspace/output/font12_gba4
+
+每次输出到全新目录，包含 glyphs.bin、glyphs.json、unicode_to_slot.tsv 和许可证提醒。
+不要直接把这些文件写进 ROM；它们仅为标准格式的待接入字模。
+mono1：每行按字节补齐，左像素为最高位；按行从上到下。12x12每字24字节，16x16每字32字节。
+gb2：每个8x8图块16字节，每行先低位平面后高位平面，左像素在bit7；多个图块按行排列。
+gba4：每个8x8图块32字节，低半字节是左像素；多个图块按行排列。
+gb2/gba4默认把宽高向上补齐8的倍数，10/12px默认生成16x16格；原始笔画位置与基线保留，不拉伸。
+背景索引为0，前景默认1。可用 --ink 指定GB的1..3或GBA的1..15；调色板和透明含义由游戏确认。
+--width 和 --height 可以指定更大的格子；不支持裁切、缩小或自动设计字形。
+
+编码映射与宽度
+Unicode用于识别源字体字形，不是GB/GBC/GBA游戏通用编码。
+slot是本次字符列表的序号，source_advance是源字体步进；字体子集文件偏移另记。
+构建器应按已确认的游戏码表映射到slot/字形编号，维护控制码保留范围与字库选择器。
+尤其不能把u16编号直接当UTF-16，也不能让新编码撞到结束符、等待、变量或选项控制码。
+ROM字库空间、指针、GB/GBC bank、GBA BG/OBJ图块、缓存与文本代码共用项目占用登记。
+
+验证边界
+本次验证点阵解析、覆盖、基线/偏移、缺字/覆盖拒绝、PNG以及三种位图格式的逐像素回读一致。
+这些不证明具体游戏的读字入口、码表、排版、缓存、取名或存档已支持中文。
+字体接入ROM后仍按LOCALIZATION_WORKFLOW与项目范围检查受影响字号/场景。
+字体转换后保留源字体版权与许可证；不要把字体的OFL与项目其它代码许可证混为一谈。
+
+来源
+Fusion Pixel：https://github.com/TakWolf/fusion-pixel-font/releases/tag/2026.09.25
+Fusion Pixel OFL：https://github.com/TakWolf/fusion-pixel-font/blob/2026.09.25/LICENSE-OFL
+GNU Unifont：https://unifoundry.com/pub/unifont/unifont-17.0.05/font-builds/
+GNU Unifont许可：https://unifoundry.com/LICENSE.txt
+
+用户指定400.ttf
+原件为fonts/user-provided/400.ttf（MuzaiPixel），另有400-native-8x12.bdf便利子集可由font_tool.py直接读取。
+原件与点阵子集范围不同，先读FONT_400_README.txt；超格/悬挂字符不静默裁切。

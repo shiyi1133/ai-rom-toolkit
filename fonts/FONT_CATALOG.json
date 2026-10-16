@@ -1,0 +1,108 @@
+{
+  "date": "2026-10-16",
+  "fonts": [
+    {
+      "id": "fusion-8",
+      "family": "Fusion Pixel",
+      "version": "2026.09.25",
+      "language": "zh-Hans",
+      "nominal_cell": [
+        8,
+        8
+      ],
+      "bitmap": "fonts/fusion-pixel/fusion-pixel-8px-monospaced-zh_hans.bdf",
+      "desktop_font": "fonts/fusion-pixel/fusion-pixel-8px-monospaced-zh_hans.ttf",
+      "glyph_count": 28410,
+      "license": "OFL-1.1",
+      "license_files": [
+        "licenses/fonts/Fusion-Pixel-OFL.txt",
+        "licenses/fonts/fusion-assets/"
+      ],
+      "official_release": "https://github.com/TakWolf/fusion-pixel-font/releases/tag/2026.09.25"
+    },
+    {
+      "id": "fusion-10",
+      "family": "Fusion Pixel",
+      "version": "2026.09.25",
+      "language": "zh-Hans",
+      "nominal_cell": [
+        10,
+        10
+      ],
+      "bitmap": "fonts/fusion-pixel/fusion-pixel-10px-monospaced-zh_hans.bdf",
+      "desktop_font": "fonts/fusion-pixel/fusion-pixel-10px-monospaced-zh_hans.ttf",
+      "glyph_count": 25314,
+      "license": "OFL-1.1",
+      "license_files": [
+        "licenses/fonts/Fusion-Pixel-OFL.txt",
+        "licenses/fonts/fusion-assets/"
+      ],
+      "official_release": "https://github.com/TakWolf/fusion-pixel-font/releases/tag/2026.09.25"
+    },
+    {
+      "id": "fusion-12",
+      "family": "Fusion Pixel",
+      "version": "2026.09.25",
+      "language": "zh-Hans",
+      "nominal_cell": [
+        12,
+        12
+      ],
+      "bitmap": "fonts/fusion-pixel/fusion-pixel-12px-monospaced-zh_hans.bdf",
+      "desktop_font": "fonts/fusion-pixel/fusion-pixel-12px-monospaced-zh_hans.ttf",
+      "glyph_count": 36981,
+      "license": "OFL-1.1",
+      "license_files": [
+        "licenses/fonts/Fusion-Pixel-OFL.txt",
+        "licenses/fonts/fusion-assets/"
+      ],
+      "official_release": "https://github.com/TakWolf/fusion-pixel-font/releases/tag/2026.09.25"
+    },
+    {
+      "id": "unifont-16",
+      "family": "GNU Unifont",
+      "version": "17.0.05",
+      "language": "Pan-Unicode BMP",
+      "nominal_cell": [
+        16,
+        16
+      ],
+      "bitmap": "fonts/unifont/unifont-17.0.05.hex",
+      "desktop_font": "fonts/unifont/unifont-17.0.05.otf",
+      "glyph_count": 57086,
+      "license": "OFL-1.1 (chosen from upstream dual license)",
+      "license_files": [
+        "licenses/fonts/Unifont-LICENSE.txt",
+        "licenses/fonts/Unifont-Font-Metadata.txt"
+      ],
+      "official_release": "https://unifoundry.com/pub/unifont/unifont-17.0.05/font-builds/"
+    },
+    {
+      "id": "user-400-muzaipixel",
+      "family": "MuzaiPixel (original 400.ttf)",
+      "version": "2.0.20241013",
+      "language": "Chinese and Japanese with Latin",
+      "nominal_cell": [
+        8,
+        12
+      ],
+      "bitmap": "fonts/user-provided/400-native-8x12.bdf",
+      "bitmap_family": "ROM Toolkit 400 Grid12",
+      "desktop_font": "fonts/user-provided/400.ttf",
+      "glyph_count": 15764,
+      "original_unicode_records": 15932,
+      "subset_excluded": 168,
+      "license": "OFL-1.1",
+      "license_files": [
+        "licenses/fonts/MuzaiPixel-OFL.md",
+        "licenses/fonts/400-Font-Metadata.json"
+      ],
+      "user_supplied": true,
+      "source_sha256": "e07ef0f7b26991436f600e414ee5286164bd5ea1d779eb8914975d69af23e6f8",
+      "original_file_preserved": true,
+      "official_original_ttf_byte_exact_match": true,
+      "usage_notes": "Bitmap is a no-clipping 8x12 subset. Original TTF and KBITX preserve all glyphs. Read docs/FONT_400_README.txt."
+    }
+  ],
+  "glyph_count_note": "Count of encoded records in the supplied bitmap font, not a guarantee of all Chinese characters or game compatibility."
+}

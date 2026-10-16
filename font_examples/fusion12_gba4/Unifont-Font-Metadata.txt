@@ -1,0 +1,19 @@
+nameID 0: Copyright © 1998-2026 Roman Czyborra, Paul Hardy, Qianqian Fang, Andrew Miller, Johnnie Weaver, David Corbett, Ælla Chiana Moskopp, Rebecca Bettencourt, Ho-Seok Ee, et al.
+
+nameID 1: Unifont
+
+nameID 2: Regular
+
+nameID 3: Unifont-17.0.05.otf
+
+nameID 4: Unifont
+
+nameID 5: Version 17.0.05
+
+nameID 6: Unifont
+
+nameID 11: https://unifoundry.com/unifont/
+
+nameID 13: Dual license: SIL Open Font License version 1.1, and GNU GPL version 2 or later with the GNU Font Embedding Exception.
+
+nameID 14: https://gnu.org/licenses/gpl.html, https://scripts.sil.org/OFL

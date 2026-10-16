@@ -2,3 +2,7 @@
 * -text
 *.cmd whitespace=cr-at-eol
 tools/windows_mgba/MGBA_LICENSE.txt whitespace=-blank-at-eol
+
+# Keep upstream font license text byte-for-byte, including its whitespace.
+licenses/fonts/** whitespace=-blank-at-eol,-blank-at-eof
+font_examples/**/Unifont-LICENSE.txt whitespace=-blank-at-eol,-blank-at-eof

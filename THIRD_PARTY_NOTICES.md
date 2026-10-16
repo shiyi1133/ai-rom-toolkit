@@ -27,3 +27,16 @@
 
 改版工作流参考作者提供的 SHARE 方法文档后重新整理；没有迁入其游戏 ROM、SAV、商业反编译语料、补丁数据或私有二进制。历史项目功能状态不作为本仓库动态验证。
 Linux 使用现有系统 Python；本仓库不重新分发 Linux Python。AppImage 保留原始归档及内部许可，用户直接从官方来源下载到 runtime/linux。
+
+## 随仓库提供的字体
+
+字体是可重新分发的资源，各自许可优先适用，根目录 MIT 不替代字体许可。
+
+| 字体 | 版本与内容 | 许可与署名 |
+|---|---|---|
+| Fusion Pixel | 2026.09.25，zh-Hans 8/10/12px BDF 与 TTF | OFL-1.1；`licenses/fonts/Fusion-Pixel-OFL.txt`，各上游组成字库许可完整保存在 `licenses/fonts/fusion-assets/` |
+| GNU Unifont | 17.0.05，HEX 与 OTF | 选择上游双重授权中的 OFL-1.1；原完整许可及字体元数据见 `licenses/fonts/Unifont-LICENSE.txt` 与 `Unifont-Font-Metadata.txt` |
+| MuzaiPixel / 400.ttf | 2.0.20241013，用户原件与同版本原 KBITX | OFL-1.1；`licenses/fonts/MuzaiPixel-OFL.md` 与 `400-Font-Metadata.json`；原 TTF 字节未修改 |
+| ROM Toolkit 400 Grid12 | 从 MuzaiPixel 原点阵源生成的 8x12 无裁切 BDF 子集 | 沿用 OFL-1.1 和原版权；为遵从保留字体名要求使用新名称，未将衍生子集命名为 MuzaiPixel |
+
+原始来源、版本与 SHA-256 在 `fonts/FONT_SOURCES.json`；子集范围、排除清单与重建命令见 `docs/FONT_400_README.txt`。导出字模时应随结果保留相应许可和署名。

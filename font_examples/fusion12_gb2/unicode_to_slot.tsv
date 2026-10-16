@@ -1,0 +1,11 @@
+﻿slot	unicode	character	byte_offset	byte_length	source_advance
+0	U+6C49	汉	0	64	12
+1	U+5316	化	64	64	12
+2	U+6D4B	测	128	64	12
+3	U+8BD5	试	192	64	12
+4	U+0041	A	256	64	6
+5	U+0042	B	320	64	6
+6	U+0031	1	384	64	6
+7	U+0032	2	448	64	6
+8	U+FF0C	，	512	64	12
+9	U+3002	。	576	64	12
