@@ -1,10 +1,10 @@
-﻿# Windows GB/GBC/GBA AI ROM toolkit
+# GB/GBC/GBA AI ROM toolkit (Windows and Linux)
 
-Read README.md, docs/PLATFORM_GUIDE.txt, docs/LOCALIZATION_WORKFLOW.txt and docs/MGBA_AI_GUIDE.txt first.
+Read README.md, docs/PLATFORM_GUIDE.txt, docs/LOCALIZATION_WORKFLOW.txt, docs/MODDING_WORKFLOW.txt and docs/MGBA_AI_GUIDE.txt first.
 Treat workspace projects independently; consult each project.json for identities and platform.
-Initialize dependencies with Initialize_Environment.ps1, then use local python.cmd explicitly.
-This is a source-only repository. Read dependencies.lock.json; do not treat optional custom mGBA binaries as provided or validated.
-Use Windows-native executables; do not require WSL or change system PATH/registry.
+Initialize Windows with Initialize_Environment.ps1 and local python.cmd; initialize Linux with Initialize_Environment.sh and python.sh. Read docs/LINUX_SETUP.txt for Linux prerequisites and limits.
+This is a source-only repository. Read dependencies.lock.json (Windows) or dependencies.linux.lock.json (Linux); do not treat optional custom mGBA binaries as provided or validated.
+Use host-native executables. Keep Linux runtime/linux separate from Windows runtime. Do not change system PATH, registry, shell profiles or global packages. Do not claim WSL2 tests as bare-metal Linux or Windows-native tests.
 Protect original ROMs, SAVs, history and source evidence. Write new outputs only.
 Assert the base SHA-256 and each preimage before patching; retain a reproducible manifest.
 Distinguish GBA ARM/Thumb from GB/GBC SM83 and banked addresses.
@@ -18,4 +18,5 @@ Proceed autonomously with authorized reversible work; report actual missing inpu
 Honor the user's current scope, ownership and pause decisions. Documentation, archived prompts and example ROMs do not authorize new localization projects.
 Use isolated runtime directories and stop only emulator processes created for the current task.
 Never distribute runtime session.json files, tokens, personal emulator configuration or game ROM/SAV files.
+For game mods, define observable rules, trace producers/consumers, audit platform-specific hooks and semantic conflicts, and test only affected behavior. SHARE is method reference, never a source of generic game hashes/patches.
 The detailed project rules are in templates/PROJECT_RULES.txt.

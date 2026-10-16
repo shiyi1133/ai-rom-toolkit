@@ -1,3 +1,5 @@
+Linux 用户先读 LINUX_SETUP.txt：官方 AppImage 用 Open_mGBA.sh，以下 Windows 定制控制示例不适用于 Linux；Linux 逐帧/TCP/私有 GDB 后端尚未提供。
+
 公开源码版前置条件
 本仓库只提供下述 Python/Lua 控制脚本，不包含定制无头二进制。以下无头、认证 TCP、逐帧及私有 GDB 示例仅适用于另行取得并验证的匹配后端。官方图形 mGBA 不保证这些定制行为。
 

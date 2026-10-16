@@ -1,30 +1,33 @@
 【初始化提示词：把下面整段交给能访问本地文件的 AI】
 
-我的目标是在 Windows 环境中完成 GB/GBC/GBA 游戏汉化或 BUG 修复。请实际检查文件并建立项目，不要只列计划。
+我的目标是在 Windows 或 Linux 环境中完成 GB/GBC/GBA 游戏汉化、改版或 BUG 修复。请实际检查文件并建立项目，不要只列计划。
 工具包目录：<填写本工具包的绝对路径>
 原始 ROM：<填写绝对路径>
 普通存档（可选）：<填写绝对路径；没有则写无>
 游戏名/地区/版本：<已知信息；未知项不要猜>
 平台：<GB / GBC / GBA>
-本次目标：<汉化范围，或 BUG 症状>
+本次目标：<汉化范围、改版功能，或 BUG 症状>
 
 1. 先读工具包的 AGENTS.md、00_README_CN.txt、docs/PLATFORM_GUIDE.txt、docs/LOCALIZATION_WORKFLOW.txt、docs/MGBA_AI_GUIDE.txt。
    区分从文档取得的旧信息与实际文件证据。SHARE 原先属于特定游戏，禁止套用其中的固定哈希、旧补丁或地址。
-2. 确认你的执行环境。Windows 原生用本包 .exe；若 AI 在 WSL 中，只在构建可明确执行 Windows 程序的桥接方式后继续，不能把 Linux 工具的通过冒充 Windows 通过。
-   CMD 可 call env.cmd；PowerShell 可直接使用 .\python.cmd。首次使用先按 prompts/00_BOOTSTRAP_ENVIRONMENT.txt 准备依赖；基础环境检查：
-   .\python.cmd tools\check_environment.py
-   首次使用或工具/环境变更时做自制程序工具链测试（可选定制模拟器需另加 --with-headless）：.\python.cmd tools\self_test.py；已有相同环境的通过证据且未受影响时不重复全套自测。
-   先查看实际结果，不猜工具版本。不要安装全局依赖、改系统 PATH、改注册表或要求管理员权限。
+2. 确认实际执行环境，按对应 00_BOOTSTRAP 提示词准备依赖，不混用平台结论。
+   Windows 原生用 python.cmd/.exe；CMD 可 call env.cmd，PowerShell 用 .\python.cmd。初始化提示词为 prompts/00_BOOTSTRAP_ENVIRONMENT.txt。
+   Linux x86_64 用 bash python.sh 和 runtime/linux；先读 docs/LINUX_SETUP.txt、prompts/00_BOOTSTRAP_ENVIRONMENT_LINUX.txt。
+   Windows 检查：.\python.cmd tools\check_environment.py；Linux 检查：bash python.sh tools/check_environment.py。
+   首次使用/受影响环境变更才运行同环境 self_test.py；已有未受影响通过证据不重复跑。实际结果、WSL2 与 Windows 原生分别记录。
+   不修改系统配置，不安装全局依赖；Linux 可选定制 mGBA 控制接口未提供。
 3. 对原 ROM 运行 tools\romkit.py identity，确认大小、SHA-256、MD5、CRC32，读取头部并核对平台、地区和修订。
    存档单独计算哈希。原始文件不能被修改或交给模拟器直接写入。
 4. 用 tools\romkit.py init 建立全新 workspace\projects\<英文项目名>：
    .\python.cmd tools\romkit.py init "<ROM>" --platform <gba/gb/gbc> --project "workspace\projects\<项目名>"
    有存档加 --save "<SAV>"。项目目录已存在时读取已有 project.json，不能覆盖重建。
    init 只按我明确的平台登记；你仍须核对实际头部和游戏信息，发现冲突先解决身份问题。
+   Linux 对应命令：bash python.sh tools/romkit.py init "<ROM>" --platform <gba/gb/gbc> --project "workspace/projects/<项目名>"
 5. 建立 PROJECT_STATUS.txt、ANALYSIS_NOTES.txt、修改占用区登记、验证清单和下一步工作记录。
    可使用 templates/OCCUPANCY_TEMPLATE.tsv；字体、文本搬移、代码和预留区必须进入同一登记，文件偏移统一为半开区间。
    模板需自行复制或合入已有登记；init 不自动提供游戏专用分配器。项目已存在时先查真实状态和归属，不重建、覆盖或恢复暂停任务。
    对 GBA 分清 ARM/Thumb 状态与 ROM 映射；对 GB/GBC 查 MBC、bank 和跨银行指针。
+   改版另读 docs/MODDING_WORKFLOW.txt，填 MOD_SPEC_TEMPLATE.txt 后使用 prompts/04_MOD_GAME.txt；纯机制调查用 05，组合/移植用 06。
 6. 先做只读资源调查：文本编码、字库、指针表、压缩格式、菜单/对话显示和已有修改情况。
    分开统计 ROM 字库、合法码值、运行时缓冲和显存缓存；填充字节和零字面指针只标候选，不直接认定空闲。
    只搜索关键词不算确认。读所在函数、调用关系、字段来源、消费者和失败路径，标注 confirmed / inferred / hypothesis。

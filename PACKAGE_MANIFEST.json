@@ -1,6 +1,6 @@
 {
   "package": "ai-rom-toolkit-source",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "date": "2026-10-16",
   "distribution": "source-only; dependencies installed locally",
   "files": [
@@ -11,23 +11,28 @@
     },
     {
       "path": ".gitignore",
-      "bytes": 257,
-      "sha256": "47133abcd99af9ee85f2d7ecc2b6131408c9de25ef9eb118dbedc9327ca1bf28"
+      "bytes": 297,
+      "sha256": "d7116cdb448f699ae3972a9f4b03b2714a6dbae133112105a6c8cd70511f5085"
     },
     {
       "path": "00_README_CN.txt",
-      "bytes": 607,
-      "sha256": "a95db34b62d3e485b4175cd3cadf2fd163cdecc9bf8d772718f2bf7c30d3fb8b"
+      "bytes": 633,
+      "sha256": "8263fc63a0fc63383d8af45623ce46c91ecbb1ddee171c55eea3a0e30018bf57"
     },
     {
       "path": "AGENTS.md",
-      "bytes": 2107,
-      "sha256": "5d78978454b7e33770525654e9095f6f267740a15167c88b3417fd9ee0aa3f97"
+      "bytes": 2667,
+      "sha256": "9c0a0ee35f63df3564f93f982c3863b5d801e1c60d6189931bd25eb38b8c89db"
     },
     {
       "path": "Check_Environment.cmd",
       "bytes": 202,
       "sha256": "18d25fd17df97fd896f4f724d044f19bcb64fb292eb9d703486ba99b3ae8600c"
+    },
+    {
+      "path": "Check_Environment.sh",
+      "bytes": 163,
+      "sha256": "4063377c3947658f7a4a065468b15d31d900f83b6ef5302455366744b1772cce"
     },
     {
       "path": "Initialize_Environment.cmd",
@@ -40,6 +45,11 @@
       "sha256": "e5004aef6be8075fdadf2005997b052c454d8f66de45fceeda2b4fb84202b873"
     },
     {
+      "path": "Initialize_Environment.sh",
+      "bytes": 1418,
+      "sha256": "a20160c7bf58e6f20db5977b7db02d096908d8ad8e01cf806eb40fa9ec5b8e20"
+    },
+    {
       "path": "LICENSE",
       "bytes": 1083,
       "sha256": "eb8422766f1bd30144e1a0f64036275e156d0a14b5ad4a91a66cf0ff1f90f7cc"
@@ -50,14 +60,24 @@
       "sha256": "b3b50d2913c9b9c099c7933107efba9c2dbc680b4b9b08546836a2e634f94da3"
     },
     {
+      "path": "Open_AI_Shell.sh",
+      "bytes": 257,
+      "sha256": "c22fd3a33fbde6bd1e1063238371ef66be3d2e1c42a237a2e962f4ca31d9348d"
+    },
+    {
       "path": "Open_mGBA.cmd",
       "bytes": 53,
       "sha256": "d6f6c42bf9e640ad7200a2f32f2f2129bb365a196442d507eadf00403560f175"
     },
     {
+      "path": "Open_mGBA.sh",
+      "bytes": 749,
+      "sha256": "f7745e85efa53d190ffefa8bee2c152bb4a57358f15baf7ce6608f0979e7d9d1"
+    },
+    {
       "path": "README.md",
-      "bytes": 4444,
-      "sha256": "2ec6a1cdfe9301bd87ffdf007887f300904fc55bd331b49dc02d2a032f5b6924"
+      "bytes": 6123,
+      "sha256": "7a3f8bd03a0447fd79440c14c1a3224d29b6351fd725c4e3f211a361d3a97d5e"
     },
     {
       "path": "Run_Self_Test.cmd",
@@ -65,9 +85,19 @@
       "sha256": "4eec60d221d85970c63fd8bf8797807aa8f06905bdc521aceb97caf4a4c01b72"
     },
     {
+      "path": "Run_Self_Test.sh",
+      "bytes": 155,
+      "sha256": "60d922fff6cfff021d3794eba8914caf3e10341be84ddbf1e24bf82fa8b3a76a"
+    },
+    {
       "path": "THIRD_PARTY_NOTICES.md",
-      "bytes": 1854,
-      "sha256": "be4bebf7bfd688e1bef199b001e8bceab14d92366b9ec0f29ecea270317cd36c"
+      "bytes": 2342,
+      "sha256": "f1daa2e0339dd8772b3be34301020f61b7d3c16a5f6800811c104ec177e57277"
+    },
+    {
+      "path": "dependencies.linux.lock.json",
+      "bytes": 2030,
+      "sha256": "a1aaba9c64ea6d4f9b2443baf3d04034f1076bcb5546b9ecede42d04cbaad260"
     },
     {
       "path": "dependencies.lock.json",
@@ -76,8 +106,13 @@
     },
     {
       "path": "docs/DOWNLOADS_AND_ENVIRONMENT.txt",
-      "bytes": 2740,
-      "sha256": "30c126e4f90c1ae14f5109d94044e0485e488be00bbbc3a80284d7b542f0f08d"
+      "bytes": 3396,
+      "sha256": "62722a06f5e1adfcf86b580dad38ae259dbee75f957b24f28813508f450afcb8"
+    },
+    {
+      "path": "docs/LINUX_SETUP.txt",
+      "bytes": 3778,
+      "sha256": "8c01d114037a2a6aad18665192f833178088b4354f6ef47c6689e3a816d0a2c5"
     },
     {
       "path": "docs/LOCALIZATION_WORKFLOW.txt",
@@ -86,8 +121,13 @@
     },
     {
       "path": "docs/MGBA_AI_GUIDE.txt",
-      "bytes": 3859,
-      "sha256": "b6c2db399d9417f0adae6fec768337b8f451f684873efc58262a5d33719bf2ed"
+      "bytes": 4036,
+      "sha256": "12d6a2fb754644a85945434f9308d8d9bf6703c6912260bbdca5572ea73a70c8"
+    },
+    {
+      "path": "docs/MODDING_WORKFLOW.txt",
+      "bytes": 8836,
+      "sha256": "2f5740277f5b067b47da72700a575d288cc597619c42d3d024385fc3ccbc529a"
     },
     {
       "path": "docs/PLATFORM_GUIDE.txt",
@@ -96,8 +136,8 @@
     },
     {
       "path": "docs/VALIDATION_SCOPE.txt",
-      "bytes": 1744,
-      "sha256": "817db749e7f149b0ab822e4edcc6da1db926ae5abb59bfa000b0e4f4819e725f"
+      "bytes": 3739,
+      "sha256": "f614e926fb7bad8e834fe5903a600a5c9c831d5c832b762b481e24d0e51dcc0e"
     },
     {
       "path": "docs/cases/GURANBO_OVERLAP.txt",
@@ -108,6 +148,11 @@
       "path": "env.cmd",
       "bytes": 252,
       "sha256": "f87689d8daaf4a5cf187b9eb8e2327e38926cc2004ffd43319ddb14540a5a29f"
+    },
+    {
+      "path": "env.sh",
+      "bytes": 325,
+      "sha256": "87275b1792de28ab5f49de94fd6621254a3503bdd19c1d0850709ba0ef2a455f"
     },
     {
       "path": "examples/gb/smoke.asm",
@@ -140,9 +185,14 @@
       "sha256": "310d61a90360a7cf1ff7632bba82f6696766c030d057595f0fcf4c0432d97fe3"
     },
     {
+      "path": "prompts/00_BOOTSTRAP_ENVIRONMENT_LINUX.txt",
+      "bytes": 4288,
+      "sha256": "f3a90b80008a4aa1fd9ce88cc7799687bf01b9a6c2655ca12bae9f8657d0ad20"
+    },
+    {
       "path": "prompts/01_INITIALIZE.txt",
-      "bytes": 3490,
-      "sha256": "d7f23134e63433957c2725a3cdb1d284b512ff8ce663bd333cb80b3925199169"
+      "bytes": 3813,
+      "sha256": "6fee57252006db4e6660c3cb98ee52201b6a99188a988e6886079655aa7fc58c"
     },
     {
       "path": "prompts/02_LOCALIZE.txt",
@@ -155,14 +205,44 @@
       "sha256": "a1325ad8003f8535433c48a538ed506af14ab90737a3095f599112b6def15682"
     },
     {
+      "path": "prompts/04_MOD_GAME.txt",
+      "bytes": 5586,
+      "sha256": "000d2365e80afe9640e202c17cf321aeadf431414639e7eaab11846a7056e877"
+    },
+    {
+      "path": "prompts/05_INVESTIGATE_MECHANIC.txt",
+      "bytes": 1794,
+      "sha256": "4e84d7f79018f139024dc365fa39f0570ef8f6baad4e7c04c0625ea189ae2942"
+    },
+    {
+      "path": "prompts/06_PORT_OR_COMBINE_MODS.txt",
+      "bytes": 2498,
+      "sha256": "61e2025b3f66a10b65ac45dc07474586d2920a856db18b743a3601006e2e6ad6"
+    },
+    {
       "path": "python.cmd",
       "bytes": 189,
       "sha256": "bb83c7646d348760a332243112460b18b5e98133eba6f9808f6fa90f97f25dc1"
     },
     {
+      "path": "python.sh",
+      "bytes": 292,
+      "sha256": "0f7dfa799c58d5ea6a0134a45e796ea3c9e1657bde898d1bfc67faf303f95570"
+    },
+    {
       "path": "templates/BUG_REPORT_TEMPLATE.txt",
       "bytes": 465,
       "sha256": "0d77b8e2eca34c4571118f58061b0128a13dd74b704d19ade5bdf2544a139d98"
+    },
+    {
+      "path": "templates/MOD_SPEC_TEMPLATE.txt",
+      "bytes": 1801,
+      "sha256": "275d0ad3a46db5ac1ca3e41c7eeef24ef1e7fd432404a8b37b62ac37601c0390"
+    },
+    {
+      "path": "templates/MOD_TEST_MATRIX.tsv",
+      "bytes": 272,
+      "sha256": "1d6a71879c0a859a0a8a56edd2757f6b6a7fd426fcfb59d75bd6620f2995b101"
     },
     {
       "path": "templates/OCCUPANCY_TEMPLATE.tsv",
@@ -176,8 +256,8 @@
     },
     {
       "path": "templates/PROJECT_RULES.txt",
-      "bytes": 2957,
-      "sha256": "7b663f76042af6f3c5363e7bbc7b683b98981a94daa51db0f48babc3c411517b"
+      "bytes": 3449,
+      "sha256": "afa294f98d7fec35bedf84bb8bdec2b7751bc7f7eea9d66821c0ed038f7bfea4"
     },
     {
       "path": "templates/TEST_ACCEPTANCE.txt",
@@ -191,8 +271,13 @@
     },
     {
       "path": "tests/test_bootstrap.py",
-      "bytes": 2698,
-      "sha256": "3534b8c891e3cbd113f99ddaccffc9ae0f69b8875b4d208b62bfa2ba476f1a8a"
+      "bytes": 4468,
+      "sha256": "1a198aa263f4fc19cbe190b13025c024a0c0e6dbe573158356f31d9909681c40"
+    },
+    {
+      "path": "tests/test_host.py",
+      "bytes": 1160,
+      "sha256": "a3def456fc700dffb0c13b97f745fcabfcb6b95fc32a6d40abf3ba0510b6afc4"
     },
     {
       "path": "tests/test_romkit.py",
@@ -201,13 +286,13 @@
     },
     {
       "path": "tools/bootstrap_environment.py",
-      "bytes": 5949,
-      "sha256": "0aad003365ccf188cba950e231d8263c759fe5fbdb86f2582b0d318d2c7c0b94"
+      "bytes": 7308,
+      "sha256": "8e180e6747a7f532b175ee2184b2c62def8409b20127923321ef406b0cd5a5ff"
     },
     {
       "path": "tools/check_environment.py",
-      "bytes": 3351,
-      "sha256": "9051f814f347fcf4ef0618ba60f0e3ce85ad174080430c9d1a0a324d51296f69"
+      "bytes": 3605,
+      "sha256": "40b1e4c83b4754976d703a521c32f3eedd18ee84269a946bc786ab5f6f60a1c9"
     },
     {
       "path": "tools/romkit.py",
@@ -216,8 +301,13 @@
     },
     {
       "path": "tools/self_test.py",
-      "bytes": 11146,
-      "sha256": "043bcddaee9d98712fa074e8b7fa215236dade3b8d5af2cf87f03ad64d990fee"
+      "bytes": 11315,
+      "sha256": "fb16026c9f28309f1f5f2830906b5bafbbefb8fae7f2d3cf410d39d4e6672364"
+    },
+    {
+      "path": "tools/toolkit_host.py",
+      "bytes": 1453,
+      "sha256": "b80306445290bad759fb3f07787db26bec9c531cd5df7be54b4c3878ddf88290"
     },
     {
       "path": "tools/verify_package.py",
@@ -255,7 +345,7 @@
       "sha256": "53f6f547f0564f0249e271a1bb541ed6e17ef346745424d478f8c84f19dae6f6"
     }
   ],
-  "total_files": 50,
-  "total_bytes": 178847,
+  "total_files": 68,
+  "total_bytes": 225690,
   "game_roms_saves_binaries_sessions_included": false
 }

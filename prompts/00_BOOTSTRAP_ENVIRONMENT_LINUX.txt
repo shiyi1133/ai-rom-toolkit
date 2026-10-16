@@ -1,0 +1,42 @@
+【直接交给 AI：初始化 Linux GB/GBC/GBA ROM 工具环境】
+
+请实际初始化并检查环境，不要只列计划。
+公开仓库：https://github.com/shiyi1133/ai-rom-toolkit
+目标目录：~/ROM_AI/ai-rom-toolkit（按实际目录调整，可含空格）
+本次范围：只准备工具；没有我另行给出的 ROM 和项目指令，不启动汉化/改版/修复，不恢复暂停任务。
+可选缓存：无；提供缓存时只校验后复用，保留不匹配文件。
+
+1. 确认环境和已有文件。
+- 当前自动安装目标是 Linux x86_64 / glibc，已有 Bash、Python 3.12+，可执行的本地磁盘和临时目录；实际验证环境见 docs/VALIDATION_SCOPE.txt。
+- WSL2 运行的是 Linux 程序时如实记为 WSL2；不能写成 Windows 原生或裸机 Linux 已验证。ARM64、musl/Alpine、macOS 暂无锁定依赖，不能下载 x86_64 包冒充支持。
+- 目标不存在才 git clone 上述仓库；已有目录先看 Git 状态/归属/修改，不能 reset、覆盖或自动清理。无 Git 时可下载公开源码 ZIP 到新目录。
+- 阅读 README.md、AGENTS.md、dependencies.linux.lock.json、docs/LINUX_SETUP.txt、docs/PLATFORM_GUIDE.txt、docs/LOCALIZATION_WORKFLOW.txt。
+- 记录源码提交或来源，不执行游戏案例和文档中旧项目的固定补丁。
+
+2. 初始化本地依赖。
+- 在仓库目录执行：bash Initialize_Environment.sh
+- 可追加 --cache-dir "<缓存绝对路径>"；相对缓存按调用目录解释。脚本使用系统 python3；其它独立解释器可指定 ROMKIT_LINUX_PYTHON="<Python绝对路径>"。
+- Python 3.12+ 是前置条件，本脚本不下载 Linux Python，不使用 sudo/apt、不修改系统 PATH/启动文件或全局 pip。确实缺少系统解释器/动态库时，报告缺项和适用发行版的安装方案，由用户决定系统安装。
+- Arm GNU Toolchain、RGBDS、官方 mGBA AppImage 从锁定官方地址下载，全 SHA-256 校验后放入 runtime/linux；与 Windows 的 runtime/arm、runtime/rgbds、runtime/mgba 分开。
+- 不覆盖无安装标记/身份不符的目录，不关闭 TLS 或哈希保护，不把系统 PATH 上不明版本当成本地安装通过。
+- 官方 mGBA 用 --appimage-extract-and-run，不需要 FUSE；仍需要该系统可加载的动态库，可写且允许执行的临时目录。库缺失/noexec/下载失败时记录具体错误，不擅自提权。
+
+3. 核对真实结果。
+- 检查进程最终退出码及 reports 中本轮 environment_linux_*.json / self_test_linux_*.json，不能只看启动提示。
+- 确认 Linux Python、Arm gcc/as/ld/objcopy/objdump、RGBDS、mGBA 的实际版本/路径和锁文件吻合。
+- 自测只构建仓库自制 GBA/GB/GBC，检查 Thumb C 编译/反汇编及受保护补丁；不使用商业 ROM、BIOS、玩家存档。
+- 缺少显示服务不阻止工具链自测；mGBA --version/offscreen 仅证明程序加载，不证明窗口、按键、截图或游戏运行。
+- 自测已有同环境且未受影响的通过证据时可追加 --skip-self-test；明确写沿用/跳过，不写本轮新通过。
+
+4. 能力和缺项分开。
+- 本仓库 tools/windows_mgba 是可选 Windows 定制后端脚本，不能在 Linux 换后缀运行；Linux 的认证 TCP、逐帧、私有 GDB 自动验收当前未提供。
+- 不从旧 SHARE 私有包拷贝后端，也不把官方 AppImage 当该定制接口。
+- 有图形会话时可运行 bash Open_mGBA.sh，且只打开隔离 ROM/SAV 副本。没有显示时说明 GUI not_run。
+- 普通存档需游戏内保存、关闭本任务旧进程、新进程实际读回；基础环境自测不含这项游戏验收。
+
+5. 完成交付并停止。
+- bash python.sh tools/verify_package.py 核对公开源码清单。
+- 之后使用 bash python.sh tools/romkit.py ...；交互工具链终端用 bash Open_AI_Shell.sh，或 source ./env.sh（仅影响当前 shell）。
+- 报告本地目录、源码版本、系统/架构/解释器、已校验依赖、实际检查与报告、缺项/未运行范围。
+- runtime/workspace/reports/.cache 留在本机；原 ROM、SAV、state、BIOS、令牌和个人配置不上传。
+- 环境初始化不等于任一游戏改版、汉化、BUG 修复或真机/存档验收；完成本次范围后等待具体项目指令。

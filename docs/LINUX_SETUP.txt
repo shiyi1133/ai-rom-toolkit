@@ -1,0 +1,43 @@
+Linux 初始化与能力边界
+
+当前自动目标：Linux x86_64 / glibc + Bash + Python 3.12+。
+已实测的发行版/宿主环境见 VALIDATION_SCOPE.txt；其他发行版需实际运行版本探测，不承诺所有 Linux/ARM/musl 通用。
+无需 sudo、FUSE、全局 pip 或修改启动文件。系统 Python 是前置条件，不包含在自动下载锁定组件中。
+
+执行
+bash Initialize_Environment.sh
+可选：--cache-dir "/path/with spaces/cache"；--skip-self-test 仅在已有未受影响证据时使用。
+Python 默认为 python3；可在执行时设置 ROMKIT_LINUX_PYTHON="/absolute/path/python3.12"。
+脚本核实实际 OS/架构，依 dependencies.linux.lock.json 安装 Arm 14.3.Rel1、RGBDS 1.0.4、mGBA 0.10.5 AppImage。
+官方完整归档校验值必须匹配；缓存身份不符或无归属目标目录保留并报错。依赖归档许可证保留，RGBDS 许可另在 licenses。
+本地依赖 runtime/linux，与 Windows runtime/arm、runtime/rgbds、runtime/mgba 分开；缓存 .cache/linux，报告 reports。
+整个初始化须读最终退出码、environment_linux 和 self_test_linux 报告；任一步失败均不能称全部准备完成。
+
+使用
+bash python.sh tools/romkit.py identity "/path/game.gba"
+bash python.sh tools/romkit.py init "/path/game.gba" --platform gba --project "workspace/projects/my_game"
+bash Check_Environment.sh
+bash Run_Self_Test.sh
+bash python.sh tools/verify_package.py
+bash Open_AI_Shell.sh：只在新 shell 中加入本地工具链路径。
+source ./env.sh：只改变当前 Bash 环境，不写 ~/.profile 等文件。
+Git 检出保留 .sh 可执行位；源码 ZIP 解压丢失位时仍可使用上述 bash 入口，或自行 chmod +x *.sh。
+Windows 工具继续使用原 .cmd/.ps1 与 dependencies.lock.json，两者报告分别记录。
+
+mGBA
+使用官方 x64 AppImage，--appimage-extract-and-run 让运行时临时解包，避免 FUSE 依赖；不是完全静态程序。
+版本检查在 QT_QPA_PLATFORM=offscreen 下执行，仅证明可加载。需要可写/可执行临时目录及兼容的系统库，不能在 noexec /tmp 上保证运行。
+有 DISPLAY/WAYLAND_DISPLAY 时：bash Open_mGBA.sh "<隔离 ROM 副本>"；此入口将配置/缓存放入 workspace/runtime/mgba-linux，避免个人配置污染。
+入口不自动复制游戏 ROM/SAV；必须先建隔离运行副本。无显示服务会明确报错，不伪造窗口/游戏通过。
+认证 TCP、暂停逐帧及私有 GDB 的 tools/windows_mgba 后端为 Windows 定制接口，Linux 当前未提供；--with-headless 会拒绝，不悄悄跳过算通过。
+不需要模拟器的工具链/字节保护自测在无显示环境仍可执行；mGBA 版本探测失败时基础环境报告会指出缺项。
+
+故障
+- Python 缺少/太旧：选择现有 3.12+ 解释器；确需系统安装时按发行版说明由用户决定，不自动 sudo。
+- 执行权限/noexec：选择允许执行的本地文件系统；AppImage 临时目录也需允许执行。无需关闭系统保护。
+- 缺动态库/加载器：保存程序错误，核官方构建需求；不换不明二进制、不忽略失败。glibc 不兼容或 musl 主机需要另行构建方案。
+- 下载/校验失败：保留旧缓存并核来源；不能删断言或关闭 TLS。使用实际网络所需的标准 HTTPS_PROXY/代理设置，不把私人代理写死进仓库。
+- 缓存可复用不代表现有安装目录可覆盖；脚本只复用匹配的 .dependency.json 与入口 SHA。
+- WSL2 检查 Linux ELF；Windows GUI/PowerShell 是另一套环境。SSH/容器无显示不证明 GUI 功能缺陷，也不能冒称图形验收。
+
+环境测试只用自制示例，不证明商业游戏、中文原生取名、普通保存/新进程读档、真机或完整流程。

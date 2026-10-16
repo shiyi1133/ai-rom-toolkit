@@ -1,4 +1,4 @@
-"""Install pinned official Windows dependencies into this checkout only."""
+"""Install pinned official host dependencies into this checkout only."""
 from __future__ import annotations
 
 import argparse
@@ -9,6 +9,7 @@ from pathlib import Path, PurePosixPath
 import shutil
 import stat
 import subprocess
+import tarfile
 import tempfile
 import urllib.request
 import uuid
@@ -74,6 +75,24 @@ def extract_archive(archive: Path, stage: Path, kind: str) -> None:
         for name in listing.stdout.splitlines():
             checked_member(name)
         subprocess.run([str(tar), "-xf", str(archive), "-C", str(stage)], check=True)
+    elif kind == "tar.xz":
+        if not hasattr(tarfile, 'data_filter'):
+            raise RuntimeError('Safe tar extraction requires Python 3.12+ on Linux')
+        with tarfile.open(archive, 'r:xz') as package:
+            # Validate the whole listing before writing; the data filter also
+            # confines symlink/hardlink destinations and rejects special files.
+            members = package.getmembers()
+            for member in members:
+                if member.name in ('.', './') and member.isdir():
+                    continue
+                checked_member(member.name)
+                tarfile.data_filter(member, str(stage))
+            package.extractall(stage, members=members, filter='data')
+    elif kind == "appimage":
+        # A pinned official binary, retained intact with its bundled licenses.
+        target = stage / 'mgba.AppImage'
+        shutil.copyfile(archive, target)
+        target.chmod(0o755)
     else:
         raise ValueError(f"Unsupported archive kind: {kind}")
 
@@ -92,6 +111,8 @@ def installed(spec: dict, target: Path) -> bool:
         path = target / relative
         if not expected or not path.is_file() or sha256(path) != expected:
             raise ValueError(f"Installed dependency entry changed: {spec['id']}/{relative}")
+        if spec.get('executable') and not os.access(path, os.X_OK):
+            raise ValueError(f'Installed entry is not executable: {relative}')
     return True
 
 
@@ -112,6 +133,8 @@ def install(spec: dict, cache: Path, runtime: Path) -> str:
         for relative in spec["entrypoints"]:
             if not (payload / relative).is_file():
                 raise ValueError(f"Missing dependency entrypoint: {relative}")
+            if spec.get('executable') and not os.access(payload / relative, os.X_OK):
+                raise ValueError(f'Dependency entry is not executable: {relative}')
         record = {
             "id": spec["id"], "version": spec["version"], "archive_sha256": spec["sha256"],
             "entrypoints": {name: sha256(payload / name) for name in spec["entrypoints"]},
@@ -130,13 +153,14 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--cache-dir", type=Path, default=ROOT / ".cache")
     args = parser.parse_args()
-    if os.name != "nt":
-        parser.error("Run Initialize_Environment.ps1 with Windows Python")
-    lock = json.loads((ROOT / "dependencies.lock.json").read_text(encoding="utf-8"))
+    from toolkit_host import require_supported_host, runtime_root
+    host = require_supported_host()
+    lock_name = 'dependencies.linux.lock.json' if host == 'linux' else 'dependencies.lock.json'
+    lock = json.loads((ROOT / lock_name).read_text(encoding="utf-8"))
     cache = args.cache_dir.resolve()
     cache.mkdir(parents=True, exist_ok=True)
-    runtime = ROOT / "runtime"
-    runtime.mkdir(exist_ok=True)
+    runtime = runtime_root()
+    runtime.mkdir(parents=True, exist_ok=True)
     outcomes = {}
     for spec in lock["dependencies"]:
         print(f"Checking {spec['id']} {spec['version']}...", flush=True)

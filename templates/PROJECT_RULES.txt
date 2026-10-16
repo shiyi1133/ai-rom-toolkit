@@ -1,6 +1,6 @@
-﻿项目操作规则（GB/GBC/GBA，Windows 原生）
+项目操作规则（GB/GBC/GBA，Windows / Linux）
 先阅读 project.json 和工具包 00_README_CN.txt；以本项目记录的 ROM 身份和平台为准。
-同时阅读工具包 docs/PLATFORM_GUIDE.txt 和 docs/LOCALIZATION_WORKFLOW.txt；沿用用户最新授权、归属和暂停决定，模板/案例不产生新增项目授权。
+同时阅读工具包 docs/PLATFORM_GUIDE.txt；汉化另读 docs/LOCALIZATION_WORKFLOW.txt，游戏改版另读 docs/MODDING_WORKFLOW.txt；沿用用户最新授权、归属和暂停决定，模板/案例不产生新增项目授权。
 保护 input 中的原版副本、saves/original.sav、此前发布物和证据。正式修改输出到全新文件，拒绝覆盖。
 确认游戏名、地区/修订版本、大小、SHA-256、CRC32；哈希不符时重新识别原因，不更改断言来强行应用。
 每个写入保留文件偏移、原始字节、修改字节、原因、来源、引用者和测试证据。
@@ -21,3 +21,6 @@ GB/GBC 记录物理 bank、CPU 地址、文件偏移、MBC 和银行切换；不
 启动、截图、无崩溃、校验通过不能证明完整汉化、全部路线或存档兼容。
 最终交付源码包须在独立空目录按声明依赖重建到目标完整 SHA-256，实际交付补丁分别严格回补；排除 ROM/SAV/state/令牌，保留字体和依赖许可。
 不修改工具包第三方文件、系统配置、其它项目或正在使用的模拟器会话。
+Windows 用 python.cmd/.exe，Linux 用 python.sh/runtime/linux 原生程序；WSL2、Windows 与裸机 Linux 的实测范围分别说明。
+游戏改版先定义触发、字段/公式、结果/副作用与失败分支；金手指仅作运行时线索，历史伪代码须回到当前基底核对。
+无地址重叠不证明补丁语义兼容；移植在目标重新定位和追消费者，组合从确切基底按声明依赖构建。

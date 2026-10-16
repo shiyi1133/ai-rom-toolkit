@@ -3,7 +3,7 @@
 运行 Initialize_Environment.cmd，或：
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Initialize_Environment.ps1
 
-版本、完整 SHA-256、官方 URL、归档布局和校验依据唯一登记在根目录 dependencies.lock.json。
+Windows 版本、完整 SHA-256、官方 URL、归档布局和校验依据登记在根目录 dependencies.lock.json；Linux 对应 dependencies.linux.lock.json。
 脚本先用 PowerShell 准备便携 Python，再用标准库下载、校验和解压依赖；Windows 自带 tar.exe 用于官方 mGBA 的 7z 归档。
 所有依赖仅安装到本项目 runtime，缓存默认在 .cache；runtime/workspace/reports/cache 不进入 Git。
 已有缓存可加 -CacheDirectory "D:\ROM_AI_CACHE"。哈希不符时保留已有文件并报错，不覆盖不明目录。
@@ -39,3 +39,10 @@ mGBA 源码：https://github.com/mgba-emu/mgba/tree/0.10.5
 源码检查和 romkit 工具可用常规 Python 3.11+；Windows 工具链和环境初始化以 Windows 10/11 x64 为目标。
 不随包提供 pip、Capstone、Pillow 等项目专用扩展；确需时用独立 venv，并按项目声明依赖。
 无需 WSL 或全局 PATH。若从 WSL 发起测试，实际执行主体应是 Windows PowerShell、python.exe 与 .exe，并在报告中说明。
+
+Linux 增补（2026-10-16）
+实际 Linux 安装使用 bash Initialize_Environment.sh；详见 LINUX_SETUP.txt。
+Linux x86_64 / glibc、Bash、已有 Python 3.12+；Python 不由脚本安装。
+独立锁文件 dependencies.linux.lock.json；Arm/RGBDS 的 Linux tar.xz、官方 mGBA x64 AppImage 放入 runtime/linux。
+采用 tar 数据过滤器和归档路径校验，保留可执行位；官方 AppImage 整体保存，运行时 --appimage-extract-and-run 避开 FUSE。
+不修改 Windows 锁定归档，也不调用 .exe 代替 Linux 验证。可选 Windows 定制控制后端不因此在 Linux 可用。

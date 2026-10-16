@@ -1,4 +1,4 @@
-"""Meaningful Windows-native smoke tests using only generated homebrew ROMs."""
+"""Host-native toolchain smoke tests using only generated homebrew ROMs."""
 from __future__ import annotations
 import argparse
 import hashlib
@@ -12,8 +12,8 @@ import sys
 import tempfile
 import time
 from datetime import datetime
-from mgba_client import send_commands
 from romkit import identity
+from toolkit_host import arm_tool, rgb_tool, require_supported_host
 
 ROOT=Path(__file__).resolve().parents[1]
 
@@ -29,11 +29,10 @@ def rejected(args):
 
 def build_roms(base):
     out={}
-    arm=ROOT/'runtime/arm/bin'
     obj,elf,rom=base/'gba.o',base/'gba.elf',base/'自制测试.gba'
-    run([arm/'arm-none-eabi-as.exe','-mcpu=arm7tdmi',ROOT/'examples/gba/smoke.s','-o',obj])
-    run([arm/'arm-none-eabi-ld.exe','-Ttext=0x08000000','-e','_start',obj,'-o',elf])
-    run([arm/'arm-none-eabi-objcopy.exe','-O','binary',elf,rom])
+    run([arm_tool('as'),'-mcpu=arm7tdmi',ROOT/'examples/gba/smoke.s','-o',obj])
+    run([arm_tool('ld'),'-Ttext=0x08000000','-e','_start',obj,'-o',elf])
+    run([arm_tool('objcopy'),'-O','binary',elf,rom])
     data=bytearray(rom.read_bytes())
     data.extend(b'\xff'*(32768-len(data)))
     data[0xa0:0xac]=b'ROMKIT TEST '
@@ -43,17 +42,16 @@ def build_roms(base):
     rom.write_bytes(data); out['GBA']=rom
     # Compiler compatibility is tested on a freestanding ARM7TDMI Thumb C fragment.
     c=base/'fragment.c'; c.write_text('int sample(int value) { return value + 1; }\n',encoding='ascii')
-    run([arm/'arm-none-eabi-gcc.exe','-mcpu=arm7tdmi','-mthumb','-mthumb-interwork','-mfloat-abi=soft',
+    run([arm_tool('gcc'),'-mcpu=arm7tdmi','-mthumb','-mthumb-interwork','-mfloat-abi=soft',
          '-ffreestanding','-fno-builtin','-c',c,'-o',base/'fragment.o'])
-    disassembly=run([arm/'arm-none-eabi-objdump.exe','-d',base/'fragment.o'])
+    disassembly=run([arm_tool('objdump'),'-d',base/'fragment.o'])
     if 'sample' not in disassembly: raise AssertionError('GBA object disassembly failed.')
-    rgb=ROOT/'runtime/rgbds'
     for platform in ('GB','GBC'):
         obj=base/(platform.lower()+'.o'); rom=base/('自制测试.'+platform.lower())
-        run([rgb/'rgbasm.exe','-o',obj,ROOT/'examples'/platform.lower()/'smoke.asm'])
-        run([rgb/'rgblink.exe','-o',rom,obj])
+        run([rgb_tool('rgbasm'),'-o',obj,ROOT/'examples'/platform.lower()/'smoke.asm'])
+        run([rgb_tool('rgblink'),'-o',rom,obj])
         flags=['-v','-p','0','-t','ROMKIT TEST','-m','0x03','-r','2']+(['-C'] if platform=='GBC' else [])
-        run([rgb/'rgbfix.exe',*flags,rom]); out[platform]=rom
+        run([rgb_tool('rgbfix'),*flags,rom]); out[platform]=rom
     return out
 
 def patch_tests(base,rom):
@@ -94,6 +92,8 @@ def patch_tests(base,rom):
                 unicode_and_spaces=True,source_unchanged=True,gb_physical_bank_mapping=True)
 
 def emulator_test(base,platform,rom):
+    sys.path.insert(0, str(ROOT/'tools/windows_mgba'))
+    from mgba_client import send_commands
     py=Path(sys.executable); manager=ROOT/'tools/windows_mgba/windows_mgba_service.py'
     runtime=base/'path with spaces'/'runtime'; runtime.mkdir(parents=True,exist_ok=True)
     common=[py,manager,'--runtime-root',runtime]
@@ -156,12 +156,15 @@ def main():
     parser=argparse.ArgumentParser();parser.add_argument('--report',type=Path);parser.add_argument('--keep',action='store_true')
     parser.add_argument('--with-headless',action='store_true',help='Test a separately supplied compatible custom backend')
     args=parser.parse_args()
-    if os.name!='nt': raise SystemExit('Run this test with the bundled Windows Python.')
-    if not str(ROOT).isascii(): raise SystemExit('Headless self-test requires an ASCII toolkit path, as documented.')
+    host = require_supported_host()
+    if args.with_headless and host != 'windows':
+        parser.error('The optional custom backend is Windows-only; Linux emulator acceptance is not implemented')
+    if args.with_headless and not str(ROOT).isascii():
+        raise SystemExit('Headless self-test requires an ASCII toolkit path, as documented.')
     parent=ROOT/'workspace/runtime';parent.mkdir(parents=True,exist_ok=True)
     base=Path(tempfile.mkdtemp(prefix='self_test_',dir=parent)).resolve()
     report=args.report or ROOT/'reports'/('self_test_'+datetime.now().strftime('%Y%m%d_%H%M%S_%f')+'.json')
-    result=dict(scope='toolchain and emulator infrastructure only; no commercial-game acceptance',ok=False,checks={})
+    result=dict(scope='toolchain and optional emulator infrastructure only; no commercial-game acceptance',host=host,ok=False,checks={})
     try:
         roms=build_roms(base);result['checks']['homebrew_builds']={k:identity(v) for k,v in roms.items()}
         result['checks']['guarded_patch']=patch_tests(base,roms['GBA'])

@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "target": "Linux x86_64, glibc; tested on Ubuntu 24.04 under WSL2",
+  "python": {"source": "existing system interpreter", "minimum_version": "3.12", "bundled": false},
+  "dependencies": [
+    {
+      "id": "arm", "directory": "arm", "version": "14.3.Rel1", "format": "tar.xz", "strip_components": 1,
+      "archive_name": "arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi.tar.xz",
+      "url": "https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu/14.3.rel1/binrel/arm-gnu-toolchain-14.3.rel1-x86_64-arm-none-eabi.tar.xz",
+      "sha256": "8f6903f8ceb084d9227b9ef991490413014d991874a1e34074443c2a72b14dbd",
+      "checksum_basis": "Arm official adjacent .sha256asc; HTTPS checksum, not an independently verified signature",
+      "executable": true,
+      "entrypoints": ["bin/arm-none-eabi-gcc", "bin/arm-none-eabi-as", "bin/arm-none-eabi-ld", "bin/arm-none-eabi-objcopy", "bin/arm-none-eabi-objdump"]
+    },
+    {
+      "id": "rgbds", "directory": "rgbds", "version": "1.0.4", "format": "tar.xz", "strip_components": 0,
+      "archive_name": "rgbds-linux-x86_64.tar.xz",
+      "url": "https://github.com/gbdev/rgbds/releases/download/v1.0.4/rgbds-linux-x86_64.tar.xz",
+      "sha256": "3e19e50ea602e316be709160acaf0a708b1fa6d32d219ec541f244442895dbb7",
+      "checksum_basis": "Official GitHub release asset digest matched 2026-10-16",
+      "executable": true, "entrypoints": ["rgbasm", "rgblink", "rgbfix", "rgbgfx"]
+    },
+    {
+      "id": "mgba", "directory": "mgba", "version": "0.10.5", "format": "appimage", "strip_components": 0,
+      "archive_name": "mGBA-0.10.5-appimage-x64.appimage",
+      "url": "https://github.com/mgba-emu/mgba/releases/download/0.10.5/mGBA-0.10.5-appimage-x64.appimage",
+      "sha256": "fdf0a5c1588e1606c38315735cf48a9f9dca3573f32a3947ebc956f8297e85cd",
+      "checksum_basis": "SHA-256 calculated after fresh official release download 2026-10-16; upstream asset has no digest",
+      "executable": true, "entrypoints": ["mgba.AppImage"]
+    }
+  ]
+}

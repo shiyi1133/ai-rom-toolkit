@@ -25,6 +25,10 @@ session.json
 *.pyd
 *.zip
 *.7z
+*.appimage
+*.AppImage
+*.tar.xz
+*.tar.gz
 *.pem
 *.key
 Thumbs.db

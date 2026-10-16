@@ -1,9 +1,11 @@
 """Check archive safety and installation ownership without network or binaries."""
 import hashlib
+import io
 import importlib.util
 import json
 from pathlib import Path
 import tempfile
+import tarfile
 import unittest
 import zipfile
 
@@ -14,6 +16,32 @@ spec.loader.exec_module(bootstrap)
 
 
 class BootstrapTests(unittest.TestCase):
+    def test_tar_rejects_traversal_and_external_links_before_extraction(self):
+        for kind in ('traversal', 'symlink', 'hardlink', 'device'):
+            with self.subTest(kind=kind), tempfile.TemporaryDirectory() as folder:
+                root = Path(folder); archive = root/'bad.tar.xz'; stage = root/'stage'; stage.mkdir()
+                with tarfile.open(archive, 'w:xz') as out:
+                    good = tarfile.TarInfo('good'); good.size = 2; out.addfile(good, io.BytesIO(b'ok'))
+                    bad = tarfile.TarInfo('../outside' if kind == 'traversal' else 'bad')
+                    if kind in ('symlink', 'hardlink'):
+                        bad.type = tarfile.SYMTYPE if kind == 'symlink' else tarfile.LNKTYPE
+                        bad.linkname = '/outside'
+                    if kind == 'device': bad.type = tarfile.CHRTYPE
+                    out.addfile(bad)
+                with self.assertRaises((ValueError, tarfile.FilterError)):
+                    bootstrap.extract_archive(archive, stage, 'tar.xz')
+                self.assertEqual(list(stage.iterdir()), [])
+
+    def test_tar_preserves_executable_payload(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder); archive = root/'tool.tar.xz'; stage = root/'stage'; stage.mkdir()
+            with tarfile.open(archive, 'w:xz') as out:
+                entry = tarfile.TarInfo('bin/tool'); entry.mode = 0o755; entry.size = 6
+                out.addfile(entry, io.BytesIO(b'hello\n'))
+            bootstrap.extract_archive(archive, stage, 'tar.xz')
+            self.assertEqual((stage/'bin/tool').read_bytes(), b'hello\n')
+            if bootstrap.os.name != 'nt': self.assertTrue((stage/'bin/tool').stat().st_mode & 0o111)
+
     def test_rejects_escape_paths(self):
         for name in ["../outside", "/outside", "C:/outside", "folder/../../outside", "..\\outside"]:
             with self.subTest(name=name), self.assertRaises(ValueError):bootstrap.checked_member(name)
